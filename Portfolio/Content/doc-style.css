@@ -1,0 +1,254 @@
+pre {
+  margin: 0 0 20px !important;
+}
+
+code {
+  background: #272822;
+  padding: .1em;
+  border-radius: .3em;
+}
+
+.doc-header {
+  position: absolute;
+  width: 100%;
+  padding-top: 40px;
+}
+
+.doc-brand {
+  float: left;
+  display: inline-block;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.doc-brand > img {
+  height: 100%;
+}
+
+.doc-header p,
+.doc-brand > span,
+#overview ul {
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, .15);
+}
+
+.doc-brand > span,
+.doc-header p {
+  display: inline-block;
+  height: 40px;
+}
+
+.doc-brand > span {
+  margin-left: 4px;
+  font-size: 13px;
+}
+
+.doc-header p {
+  margin-top: -2px;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+
+#overview {
+  position: relative;
+  height: 100%;
+  padding: 120px 0 40px;
+  overflow: hidden;
+}
+	
+#overview:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 80%;
+  background: url(../img/bg-img.jpg) center;
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, .15) inset;
+}
+	
+#overview ul {
+  font-size: inherit;
+}
+	
+#overview ul > li {
+  margin-bottom: 15px;
+}
+	
+#overview .container,
+#overview .container .row,
+#overview .container .row > div,
+.doc-screen {
+  position: relative;
+  height: 100%;
+}
+	
+.doc-screen img {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+}
+	
+.doc-powered {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  height: 40px;
+}
+	
+.doc-powered li {
+  margin: 0 10px;
+}
+
+.doc-nav {
+  padding-top: 40px;
+}
+
+.doc-nav-wrap > li {
+  padding-left: 5px;
+}
+
+.doc-nav-wrap ul {
+  height: 0;
+  margin-top: 10px;
+  -webkit-transition: .5s;
+     -moz-transition: .5s;
+          transition: .5s;
+  overflow: hidden;
+}
+
+.doc-nav-wrap > li:first-child.active > ul {
+  height: 298px;
+}
+
+.doc-nav-wrap > li:last-child.active > ul {
+  height: 289px;
+}
+
+.doc-nav-wrap ul > li {
+  margin-bottom: 5px;
+}
+
+.doc-nav-wrap a {
+  position: relative;
+  display: inline-block;
+  padding: 0 !important;
+  color: inherit;
+}
+
+.nav.doc-nav-wrap > li > a:hover,
+.nav.doc-nav-wrap > li > a:focus {
+  background: none;
+}
+
+.doc-nav-wrap a:hover,
+.doc-nav-wrap a:focus,
+.doc-nav-wrap li.active > a {
+  color: #b5b5b5;
+  text-decoration: none;
+}
+
+.doc-nav-wrap a:focus {
+  color: inherit;
+}
+
+.doc-nav-wrap a:before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  display: none;
+  width: 4px;
+  height: 100%;
+  background: #b5b5b5;
+}
+
+.doc-nav-wrap li.active > a:before {
+  display: inline-block;
+}
+
+.doc-nav-wrap ul > li > a:before {
+  left: -10px;
+  width: 2px;
+}
+
+.doc-nav-wrap ul {
+  padding-left: 10px;
+  font-size: 13px;
+}
+
+.doc-nav.fix {
+  position: fixed;
+  top: 0;
+  width: 165px;
+}
+
+#ui-element,
+#documentation,
+.element-wrap { 
+  padding-top: 40px; 
+}
+
+#ui-element > h2,
+#documentation > h2 {
+  margin-top: 0;
+}
+
+#doc-8 {
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .doc-screen img {
+    bottom: 80px;
+	left: -60px;
+  }
+
+  #doc-nav {
+    display: none;
+  }  
+}
+
+@media screen and (max-width: 767px) {
+  #doc-nav {
+    display: none;
+  }
+  
+  .doc-header {
+    margin-top: 20px;
+  }
+  
+  .doc-header p {
+    font-size: inherit;
+  }
+  
+  #overview {
+    height: auto !important;
+	padding: 160px 0 0 !important;
+  }
+  
+  .doc-screen {
+    display: none;
+  }
+  
+  .doc-powered {
+    width: 100%;
+	text-align: center;
+	bottom: -70px;
+  }
+  
+  .doc-header > .container {
+    width: 300px;
+	margin: 0 auto;
+  }
+  
+  #overview:before {
+    height: 100%;
+  }
+  
+  #overview ul {
+    text-align: center;
+  }
+}

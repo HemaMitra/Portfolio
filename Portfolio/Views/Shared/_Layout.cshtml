@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Protfolio</title>
+    
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="~/Content/SyntaxHighlighter/shThemeDefault.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+</head>
+<body data-spy="scroll" data-target="#main-nav">
+
+    <!---- Adding navigation Bar ----->
+    <!-- HEADER -->
+    <header class="main-header">
+
+        <div class="navbar navbar-fixed-top">
+            <nav class="container">
+
+                <!-- Site Logo -->
+                <div class="navbar-header">
+                    <a href="#hero" class="logo smooth-scroll">
+                        <img src="~/img/logo_2.jpg" alt="">
+                    </a>
+
+                    <!-- Navbar Toggle -->
+                    <button type="button" class="navbar-toggle navbar-right" data-toggle="collapse" data-target="#main-nav">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+
+                <!-- Main Navigation -->
+                <div id="main-nav" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right nav-style">
+                        <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "class='smooth-scroll'" })</li>
+                        <li>@Html.ActionLink("Profile", "AboutMe", "Home", null, new { @class = "class='smooth-scroll'" })</li>
+                        <li>@Html.ActionLink("Portfolio", "Assignments", "Home", null, new { @class = "class='smooth-scroll'" })</li>
+                        <li>@Html.ActionLink("Experience", "Experience", "Home", null, new {@class = "class='smooth-scroll'"})</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "class='smooth-scroll'" })</li>
+                            
+        </ul>
+                </div>
+
+            </nav><!-- .container -->
+        </div>
+
+    </header>
+    <!-- HEADER END -->
+    <!-- Main Navigation -->
+
+    @RenderBody()
+
+
+    <!-- FOOTER -->
+    <footer class="main-footer navbar-fixed-bottom">
+        <div class="container">
+            <ul class="list-inline fa-ul archive">
+                <li><i class="fa-li fa fa-save"></i><a href="~/img/HemaMitra_Resume.pdf" class="colBlack">Download CV as PDF</a></li>
+            </ul>
+        </div>
+    </footer>
+    <!-- FOOTER -->
+
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushJScript.js"></script>
+    <script src="~/Scripts/jquery.scrollTo.js"></script>
+    <script src="~/Scripts/jquery.magnific-popup.js"></script>
+    <script src="~/Scripts/jquery.easypiechart.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery.fitvids.js"></script>
+    <script src="~/Scripts/maxnum.js"></script>
+    <script src="~/Scripts/palindrom.js"></script>
+    <script src="~/Scripts/multiple.js"></script>
+    <script src="~/Scripts/random.js"></script>
+    <script src="~/Scripts/Factorial.js"></script>
+    <script src="~/Scripts/animate.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+    
+   
+    <!-- For IE 9
+    <script src="~/Scripts/html5shiv.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    -->
+
+    <!-- For Blog-Single -->
+    <script src="~/Scripts/jquery.shuffle.modernizr.js"></script>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

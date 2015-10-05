@@ -1,0 +1,426 @@
+﻿@{
+    ViewBag.Title = "Portflio";
+}
+<br>
+<br>
+<section id="profile">
+    <div class="container">
+        <h3 class="asmthead fade-toggle">JavaScript Exercises</h3>
+        <div class="row alignCenter">
+            <div class="col-md-12 col-sm-12">
+                <br><br>
+                <div class="col-md-4 col-sm-6">
+                    <a href="" data-toggle="modal" data-target="#max"><img src="~/img/num.jpg" title="Finds the largest number" class="box" /></a>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <a href="" data-toggle="modal" data-target="#pal"><img src="~/img/Pali.jpg" title="Palindrome" class="box" /></a><br><br>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <a href="" data-toggle="modal" data-target="#fizz"><img src="~/img/Fizz.jpg" title="FIZZ BUZZ" class="box" /></a><br><br>
+                </div>
+
+
+                <br><br><br><br><br>
+
+                <div class="col-md-6 col-sm-6 alignCenter">
+                    <a href="" data-toggle="modal" data-target="#ran"><img src="~/img/Random.jpg" title="Generates Random Numbers" class="box" /> </a><br><br>
+                </div>
+
+                <div class="col-md-6 col-sm-6 alignCenter">
+                    <a href="" data-toggle="modal" data-target="#fac"><img src="~/img/Fact.jpg" title="Finds the factorial" class="box" /></a><br><br>
+                </div>
+
+                <!--div class="col-md-4 col-sm-6">
+                <a href="" data-toggle="modal" data-target="#pal"><img src="~/img/Pali.jpg" title="Palindrome" /></a><br>
+            </div>-->
+            </div>
+
+
+        </div>
+    </div>
+</section>
+        <!--Max of 5 -->
+        <div class="modal fade" id="max" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title" id="myModalLabel">Max of Five</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-xs-6">
+                            This program accepts 5 numbers and returns the largest one.
+
+                            <h4>Enter 5 numbers</h4>
+                            <hr>
+                            <p>
+                                No1 : <input type='number' id='N1' size='10' value=0 class='required form-control1'><br>
+                                No2 : <input type='number' id='N2' size='10' value=0 class='required form-control1'><br>
+                                No3 : <input type='number' id='N3' size='10' value=0 class='required form-control1'><br>
+                                No4 : <input type='number' id='N4' size='10' value=0 class='required form-control1'><br>
+                                No5 : <input type='number' id='N5' size='10' value=0 class='required form-control1'><br>
+                                <hr>
+                                <center>
+                                    <button type='button' id="FndMax" class="btn btn-lg btn-danger">Get The Maximum Number</button>
+                                    <button type='button' id="ClrMax" class="btn btn-lg btn-danger">Clear</button>
+                                </center>
+                                <h4 id='MAXNO' class="jsClearOnExit"></h4>
+
+                        </div>
+                        <div class="col-xs-6">
+                            <pre class="brush:js">
+$('body').on('click', '#FndMax', function () {
+ $('#N1').focus().select();
+ $('#MAXNO').hide();
+  
+ var n1=0, n2=0, n3=0, n4=0, n5=0;
+ var result = 0;
+    n1 = $('#N1').val(); 
+    n2 = $('#N2').val();     
+	n3 = $('#N3').val();
+	n4 = $('#N4').val();
+	n5 = $('#N5').val();
+ 
+   result = Math.max(n1,n2,n3,n4,n5);	
+	// Display Result
+	$('#MAXNO').removeClass('errMsg');
+	$('#MAXNO').text("Max Number is :" +result).show();
+ });
+  // Clear fields
+ $('body').on('click', '#ClrMax', function (){
+   $('#N1').val(0).select();   	
+   $('#N2').val(0);
+   $('#N3').val(0);
+   $('#N4').val(0);
+   $('#N5').val(0);
+     
+   $('#N1').focus();
+   $('#MAXNO').hide();
+  });
+});
+				   
+                </pre>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-footer no-margin">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- End Max of 5 -->
+        <!-- Palindrome -->
+
+        <div class="modal fade" id="pal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title" id="myModalLabel">Palindrome</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-xs-6">
+                            <p>Palindrom is a word which reads the same front and backwords.</p>
+
+                            <p>This code accepts a string from a user and determines if it is a palindrome.
+                            Displays relevant message to the user.</p>
+                            <h4>Finding a Palindrome</h4>
+                            <hr>
+
+                            Enter word :
+                            <input type='TEXT' id='paliTxt' size=10 value='' class="form-control1">
+
+                            <button type='button' id='FndPali' class="btn btn-lg btn-danger">Check Palindrome</button>
+                            <button type='button' id='ClrPali' class="btn btn-lg btn-danger">Clear</button>
+                            <hr>
+
+                            <div id="Pali" class="jsClearOnExit"><h4></h4></div>
+
+
+                        </div>
+                        <div class="col-xs-6">
+                            <pre class="brush:js">
+     $('body').on('click', '#FndPali', function () {
+	    $('#N1').focus();
+	    $('#Pali').hide();
+	    // Check Palindrome
+	    $('#B1').click(function(){
+		var str = $('#N1').val();
+		str = str.toLowerCase();
+		var len = str.length;
+		var num = 0, flag = 0;
+		if(str == '' || str == ' ')
+		{
+			$('#Pali').addClass('errMsg');
+			$('#Pali').text('Please enter a
+                word').show();		
+	        	$('#N1').focus();
+		}
+		else
+		{
+			for(num = 0;num < len;num++){
+                if(str.charat(num) == 
+                        str.charAt(len-1)){
+                    len=len - 1; flag=1;
+                    continue;}
+                else{   flag=0; break;}
+         } 
+            // Displaying Result
+			$('#Pali').removeClass('errMsg');
+			if(flag == 1)
+				$('#Pali').text('You have entered
+                     a Plaindrom').show();	
+			else
+				$('#Pali').text('The entered word 
+                    is not a Plaindrom').show();		
+		}
+	});
+	// Clear fields
+  $('body').on('click', '#ClrPali', function (){
+		$('#N1').val('');
+        $('#N1').focus();
+	    $('#Pali').hide();
+	});
+});
+				</pre>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-footer no-margin">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End palindrome -->
+        <!-- FIZZ BUZZ-->
+        <div class="modal fade" id="fizz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title" id="myModalLabel">Fizz Buzz</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-xs-6">
+                            This program checks numbers 1 to 100 for divisibility with 3, 5 and 15.
+                            Displays FIZZ for numbers divisible by 3, BUZZ for numbers divisible by 5
+                            and FIZZBUZZ for numbers divisible by 15.
+
+                            <h4>Click below button to generate numbers</h4>
+
+                            <button type="button" id="fndFizz" class="btn btn-lg btn-danger">Find fizzzz</button>
+                            <hr>
+                            <font size='2'>
+                                <center>
+                                    <div id="divTab" class="jsClearOnExit"></div>
+                                </center>
+                            </font>
+                        </div>
+                        <div class="col-xs-6">
+                            <pre class="brush:js">
+$('body').on('click', '#fndFizz', function () {
+{
+	var num = 1;
+	var arr = new Array(100);
+	
+	// checking for multiples and 
+    // initializing the array arr
+	for(num = 1;num<=100;num++){
+		if(num % 3 == 0 && num % 5 == 0)
+		{	arr[num-1] = 'FIZZBUZZ';}
+		else if(num % 3 == 0)
+		{	arr[num-1] = 'FIZZ';}
+		else if(num % 5 == 0)
+		{	arr[num-1] = 'BUZZ';}
+		else
+			arr[num-1] = num;
+	}
+	// Reinitializing loop variable to 0 for reuse
+	num = 0;
+	// Generating table at run time
+	var table = document.createElement("TABLE");
+	table.border = 2;
+	// Add rows to the table
+	for(var rowCnt = 0;rowCnt < 10;rowCnt++){
+		var row = table.insertRow(-1);
+	
+		// Add columns in each row
+		for(var colCnt = 0;colCnt < 10;colCnt++){
+			var col = row.insertCell(-1);
+			col.innerHTML = arr[num];
+			num++;}}
+	
+    // Displaying table
+	var divTab = document.getElementById("divTab");
+	divTab.innetHTML = "";
+	divTab.appendChild(table);
+}
+				</pre>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-footer no-margin">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIZZ BUZZ End-->
+        <!-- Random Numbers -->
+        <div class="modal fade" id="ran" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close " data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title" id="myModalLabel">Random Numbers</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-xs-6">
+                            This program randomly generates 10 numbers.
+                            Displays the result of addition and multipplication of
+                            the randomly generated numbers.
+
+                            <h3>Addition and multiplication of numbers in the array</h3>
+                            <hr>
+                            <button type="button" id="fndRand" class="btn btn-lg btn-danger">Generate Numbers</button>
+                            <br><hr>
+                            <h4 id='arrno' class="jsClearOnExit"></h4><br>
+                            <h4 id='addDiv' class="jsClearOnExit"></h4><br>
+                            <h4 id='mulDiv' class="jsClearOnExit"></h4>
+
+                        </div>
+                        <div class="col-xs-6">
+                            <pre class="brush:js">
+$('body').on('click', '#fndRand', function () {
+	var cnt = 0;
+	var num = [];
+	var tot = 0;
+	for (cnt = 0;cnt < 10;cnt++){
+		num[cnt] = Math.round(Math.random() * 10)
+    ;} 
+	
+	$('#arrno').text(num);	
+	jQuery.each(num,function(i,val){
+		tot = tot + num[i];				
+	});
+	$('#addDiv').text("Addition Of Above 
+        Numbers Is : " +tot);
+	tot = 1;
+	jQuery.each(num,function(i,val){
+		tot = tot * num[i];				
+	});
+	$('#mulDiv').text("Multiplication Of 
+        Above Numbers Is : " +tot);
+});
+				</pre>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-footer no-margin">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Random Numbers -->
+        <!-- Factorial of a number -->
+        <div class="modal fade" id="fac" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 class="modal-title" id="myModalLabel">Factorial</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-xs-6">
+                            <p> Factorial is the product of all positive integers less than or equal to n. It is denoted as n!</p>
+                            <p>For example,</p>
+                            <p>If n=7, the factorial of 7! will be</p>
+
+                            <p> 7! = 7 X 6 X 5 x 4 x 3 x 2 x 1 = 5040.</p>
+                            
+                            <p>The Program calculates the factorial of a number and displays in on the screen.</p>
+                            <br>
+
+                            <h4>Factorial Of A Number</h4>
+                            <hr>
+
+                            Enter a number :
+                            <input type='NUMBER' id='txtFact' size=10 value='' class="form-control1"><br><br>
+
+                            <button type='BUTTON' id='fndFact' class="btn btn-lg btn-danger disab">Get Factorial</button>
+                            <button type='BUTTON' id='clrFact' class="btn btn-lg btn-danger">Clear</button>
+                            <hr>
+                            <h4 id="Fact" class="jsClearOnExit"></h4>
+
+
+                        </div>
+                        <div class="col-xs-6">
+                            <pre class="brush:js">
+$('body').on('click', '#fndFact', function () {
+  $('#N1').focus();
+  $('#Fact').hide();
+    // Finding the factorial
+  $('#B1').click(function(){
+     var loop = 1, result = 1;  
+     var num = $('#N1').val();
+     if(num == ''){
+	    $('#Fact').addClass('errMsg');
+	    $('#Fact').text('Enter a Number').show();} 
+     else{	
+         // Calculate the factorial if a 
+         //   valid number is entered
+	     for(loop = 1;loop<=num;loop++){
+		    result = result * loop;}
+	
+     // Display Result
+		$('#Fact').removeClass('errMsg');
+		$('#Fact').text("The factorial of the 
+        entered number is : " +result).show();
+        }
+	  });
+  // Clear fields
+$('body').on('click', '#clrFact', function () {
+     $('#N1').val('');$('#N1').focus();
+     $('#Fact').hide();
+  });
+});
+				</pre>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-footer no-margin">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- End Factorial of a number -->
+        @section scripts
+{
+            <script type="text/javascript">
+
+                //This clears out the content of each of the inputs in the modal popups and also clears out the results
+                //divs with the class of jsClearOnExit
+                $('body').on('hidden.bs.modal', '.modal', function (event) {
+                    $(event.target).find('input').each(function (index, element) {
+
+                        $(element).val('')
+                    })
+                    $(event.target).find('.jsClearOnExit').each(function (index, HTMLDivElement) {
+                        $(HTMLDivElement).text('')
+                    })
+                    
+                });
+                SyntaxHighlighter.all();
+
+            </script>
+        }
+
+
