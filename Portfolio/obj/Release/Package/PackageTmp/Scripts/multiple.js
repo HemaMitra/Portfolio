@@ -41,7 +41,7 @@ $('body').on('click', '#fndFizz', function () {
     divTab.innetHTML = "";
     divTab.appendChild(table);
     $('#divTab').show();
-    document.getElementById("fndFizz").disabled = true;
+    //document.getElementById("fndFizz").disabled = true;
 });
 
 

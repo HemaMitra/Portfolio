@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Portfolio.Models.BlogPost>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br /><br />
+<h2>Index</h2>
+@Html.ActionLink("Create New Blog","Create")
+<br /><br />
+<table align="left">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Title)</th>
+            <th>@Html.DisplayNameFor(m => m.Body)</th>
+            <th>@Html.DisplayNameFor(m => m.Created)</th>
+            <th>@Html.DisplayNameFor(m => m.Updated)</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Body</td>
+            <td>@item.Created</td>
+            <td>@item.Updated</td>
+            
+            <td>@Html.ActionLink("Edit","Edit",new {Id = item.Id})
+                @Html.ActionLink("Details", "Details", new { Id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { Id = item.Id})           
+            </td>   
+        </tr>
+    }
+        
+
+</table>
+
