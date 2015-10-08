@@ -1,0 +1,6 @@
+c:\users\bob tabor\documents\visual studio 2013\Projects\ForIterations\ForIterations\bin\Debug\ForIterations.exe.config
+c:\users\bob tabor\documents\visual studio 2013\Projects\ForIterations\ForIterations\bin\Debug\ForIterations.exe
+c:\users\bob tabor\documents\visual studio 2013\Projects\ForIterations\ForIterations\bin\Debug\ForIterations.pdb
+c:\users\bob tabor\documents\visual studio 2013\Projects\ForIterations\ForIterations\obj\Debug\ForIterations.csprojResolveAssemblyReference.cache
+c:\users\bob tabor\documents\visual studio 2013\Projects\ForIterations\ForIterations\obj\Debug\ForIterations.exe
+c:\users\bob tabor\documents\visual studio 2013\Projects\ForIterations\ForIterations\obj\Debug\ForIterations.pdb

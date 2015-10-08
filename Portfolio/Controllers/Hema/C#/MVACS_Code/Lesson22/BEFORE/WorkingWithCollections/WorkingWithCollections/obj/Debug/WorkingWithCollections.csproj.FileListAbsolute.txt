@@ -1,0 +1,1 @@
+c:\users\bob tabor\documents\visual studio 2013\Projects\WorkingWithCollections\WorkingWithCollections\bin\Debug\WorkingWithCollections.exe.config

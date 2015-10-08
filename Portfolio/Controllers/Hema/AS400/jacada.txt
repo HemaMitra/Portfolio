@@ -1,0 +1,3 @@
+What is jacada ?
+
+Jacada provides a complete software infrastructure to rapidly transform legacy systems into e-business and wireless solutions and empower enterprise developers to build Internet applications. By automating the delivery of Java, HTML, and XML solutions, Jacada helps companies leverage their investments in mainframe and AS/400 applications. 

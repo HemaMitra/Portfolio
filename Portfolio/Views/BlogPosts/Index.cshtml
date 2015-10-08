@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Portfolio.Models.BlogPost>
-
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Blog Index";
 }
-
+<script src="~/Scripts/jquery.dotdotdot.js"></script>
 <!-- SUBHEADER -->
 <div class="subheader">
     <div class="container">
@@ -43,23 +43,35 @@
             <!-- BLOG POST -->
             <div class="blog">
             @foreach (var item in Model) {
-
+                if(item.Published == true)
+                {    
                 <article class="blog-post">
                     <h2 class="blog-title shadow colRed"><a href="#">@Html.DisplayFor(modelItem => item.Title)</a></h2>
-
                     <img class="blog-thumb" src="@item.MediaURL" alt="">
 
                     <div class="blog-meta  blog-calfont">
                         <ul class="list-inline list-unstyled">
                             <li><i class="fa fa-calendar"></i> @Html.DisplayFor(modelItem => item.Created)</li>
                             <li><i class="fa fa-comments"></i> <a href="#">10</a></li>
+                            
+                                @if(User.IsInRole("Admin"))
+                                {
+                                   <li> @Html.ActionLink("Edit", "Edit", new { id = item.Id })</li>
+                                   <li>@Html.ActionLink("Delete", "Delete", new { id=item.Id })</li>
+                                    
+                                }
+                            
                         </ul>
                     </div>
                     
-                    <p>@Html.DisplayFor(modelItem => item.Body)
-
-                    <a class="pull-right" href="#"><i>continue reading &nbsp;<i class="fa fa-angle-double-right"></i></i></a>
-                </article>
+                    <div class="wrap">
+                        @Html.Raw(item.Body)
+                    </div>
+                    <a class="pull-right" href="@Url.Action("DetailsU",new {Slug = item.Slug})">
+                        <i>continue reading &nbsp;<i class="fa fa-angle-double-right"></i></i></a>
+</article>
+                }
+                continue;
             }
            <!-- Pagination -->
            <nav class="text-right">
@@ -100,14 +112,34 @@
 
             <div class="sidebar-wrap">
                 <h3 class="sidebar-title shadow colRed">User</h3>
+                
+                @if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+            @Html.AntiForgeryToken()
+                    
 
-                <div class="col-md-12 col-sm-12">
-                    <a class="btn btn-danger sidebar-btn" href="@Url.Action("Login", "Account")">Login</a>
-                </div>
-                <br />
-                <div class="col-md-12 col-sm-12">
-                    <a class="btn btn-danger sidebar-btn" href="@Url.Action("Register", "Account")">Register</a>
-                </div>
+                    <!--<ul class="nav navbar-nav navbar-right">-->
+    <div class="col-md-12 col-xs-12">
+        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </div>
+                    
+        <br><br>
+    <div class="col-md-12 col-xs-12">
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger sidebar-btn">Log off</a>
+    </div>
+    }
+}
+                else
+                {
+                    <div class="col-md-12 col-xs-12">
+                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-danger sidebar-btn" })<br><br>
+                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-danger sidebar-btn" })
+                    </div>
+
+                }
+
             </div>
 
                 @*<div class="sidebar-wrap">
@@ -122,9 +154,21 @@
         </div>
     </div><!-- .row -->
 <!-- .container -->
-
-
-
+@section scripts
+{
+    <script>
+    $(document).ready(function() {
+	    $(".wrap").dotdotdot({	
+    	    /*	to add ... */
+            ellipsis	: '... ',    
+            /*	How to cut off the text/html: 'word'/'letter'/'children' */
+		    wrap : 'word',
+            /*	Optionally set a max-height, if null, the height will be measured. */
+		    height	: 30
+	    });
+    });
+    </script>
+}
 
 
 

@@ -1415,11 +1415,13 @@ margin-left:125px;
   /* Added by Hema
       background: #f5f5f5*/
   margin-left:125px;
-  background: #ffffff;
+  
 }
 
 .sidebar-list > li {
   margin-bottom: 10px;
+  /* Added by Hema */
+  margin-left:125px;
 }
 
 .blog-single .pager {
@@ -2054,6 +2056,22 @@ margin-left:125px;
 
 
 /*Added by Hema*/
+.td-restrict {
+white-space: nowrap; 
+overflow: hidden; 
+text-overflow: ellipsis;
+}
+
+.tr-admin {
+    border:1px solid #b5b5b5;
+}
+
+.adminTable {
+border:1px solid #b5b5b5;
+width: 100%; white-space:nowrap; table-layout: fixed;
+}
+
+
 
 
 .fade-toggle{

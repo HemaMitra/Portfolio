@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<TITLE>Max Number</TITLE>
+<link rel="stylesheet" type="text/css" href="template.css">
+</HEAD>
+
+
+
+<BODY onLoad = "focus()">
+
+    <script src="fnScript.js"></script>
+<H4>Enter 5 numbers</H4>
+
+<HR>
+<BR><BR><BR><BR><BR>
+
+No1 : <INPUT TYPE='TEXT' ID='N1' SIZE=10 VALUE='0' onBlur="chknum('N1')">
+No2 : <INPUT TYPE='TEXT' ID='N2' SIZE=10 VALUE='0' onBlur="chknum('N2')">
+No3 : <INPUT TYPE='TEXT' ID='N3' SIZE=10 VALUE='0' onBlur="chknum('N3')">
+No4 : <INPUT TYPE='TEXT' ID='N4' SIZE=10 VALUE='0' onBlur="chknum('N4')">
+No5 : <INPUT TYPE='TEXT' ID='N5' SIZE=10 VALUE='0' onBlur="chknum('N5')">
+
+<BR><BR><BR><BR><BR><BR>
+
+<CENTER>
+<BUTTON TYPE='BUTTON' NAME='B1' onClick='maxOfFive()'>Get The Maximum Number</BUTTON>
+<BUTTON TYPE='BUTTON' NAME='B2' onClick='clrdta()'>Clear</BUTTON>
+</CENTER>
+
+<HR>
+<H4>
+<div id="MaxNo"></div>
+</H4>
+</BODY>
+
+</HTML>

@@ -54,8 +54,7 @@ namespace Portfolio.Migrations
                 roleManager.Create(new IdentityRole { Name = "Moderator" });
             }
 
-            userManager = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(context));
+            
 
             if (!context.Users.Any(u => u.Email == "moderator@coderfoundry.com"))
             {
@@ -64,7 +63,7 @@ namespace Portfolio.Migrations
                     UserName = "moderator@coderfoundry.com",
                     Email = "moderator@coderfoundry.com",
                     FirstName = "Moderator",
-                    LastName = "",
+                    LastName = "M",
                     DisplayName = "Moderator"
                 }, "Password-1");
             }

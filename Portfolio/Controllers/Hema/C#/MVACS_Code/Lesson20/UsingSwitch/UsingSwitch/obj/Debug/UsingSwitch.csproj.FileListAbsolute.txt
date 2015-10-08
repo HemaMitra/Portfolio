@@ -1,0 +1,6 @@
+c:\users\bob tabor\documents\visual studio 2013\Projects\UsingSwitch\UsingSwitch\bin\Debug\UsingSwitch.exe.config
+c:\users\bob tabor\documents\visual studio 2013\Projects\UsingSwitch\UsingSwitch\bin\Debug\UsingSwitch.exe
+c:\users\bob tabor\documents\visual studio 2013\Projects\UsingSwitch\UsingSwitch\bin\Debug\UsingSwitch.pdb
+c:\users\bob tabor\documents\visual studio 2013\Projects\UsingSwitch\UsingSwitch\obj\Debug\UsingSwitch.csprojResolveAssemblyReference.cache
+c:\users\bob tabor\documents\visual studio 2013\Projects\UsingSwitch\UsingSwitch\obj\Debug\UsingSwitch.exe
+c:\users\bob tabor\documents\visual studio 2013\Projects\UsingSwitch\UsingSwitch\obj\Debug\UsingSwitch.pdb

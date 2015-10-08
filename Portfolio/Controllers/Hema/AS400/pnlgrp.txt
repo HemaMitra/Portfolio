@@ -1,0 +1,21 @@
+ALTHELP(CA01) – If HLPPNLGRP is used then we have to use this keyword to specify that help will be available if F1 is pressed.
+A                                      HELP                          
+A                                      HLPTITLE('Full Screen Help')  
+A                                      HLPPNLGRP(HELP HELP)          
+A                                      ALTHELP(CA01)                 
+HELP – Is an object of type *PNLGRP
+A          H                           HLPPNLGRP(HELP CUID) 
+A                                      HLPARA(04 027 04 034)
+A          H                           HLPPNLGRP(HELP CDPT) 
+A                                      HLPARA(05 027 05 028)
+
+CUID is a *PNLGRP . This help will appear for field CUID which is present on line 4 col 27(Starting location). The length of CUID is 8. Hence ending location is (4 34). 
+DDS Source for HELP of object type *PNLGRP
+:pnlgrp.                         
+:help name=help.                 
+:p.                              
+:lines.                          
+All help texts for this screen.  
+:elines.                         
+:ehelp.                          
+:epnlgrp.                        

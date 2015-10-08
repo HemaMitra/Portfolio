@@ -40,6 +40,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SendGrid.SmtpApi">
+      <HintPath>..\packages\SendGrid.SmtpApi.1.3.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGridMail">
+      <HintPath>..\packages\Sendgrid.6.1.0\lib\SendGridMail.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -159,7 +165,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogPostsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -172,6 +177,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StringUtilites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -240,6 +246,7 @@
     <Content Include="img\Award.pdf" />
     <Content Include="img\Award_2.pdf" />
     <Content Include="img\Appreciation_Card.pdf" />
+    <Content Include="Connections.config" />
     <None Include="Properties\PublishProfiles\hmitra - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\hmitra - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -254,6 +261,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-1.11.2.js" />
     <Content Include="Scripts\jquery-1.11.2.min.js" />
+    <Content Include="Scripts\jquery.dotdotdot.js" />
+    <Content Include="Scripts\jquery.dotdotdot.min.js" />
     <Content Include="Scripts\jquery.easypiechart.js" />
     <Content Include="Scripts\jquery.easypiechart.min.js" />
     <Content Include="Scripts\jquery.fitvids.js" />
@@ -509,10 +518,6 @@
     <Content Include="Views\Home\BlogSingle.cshtml" />
     <Content Include="Views\Home\JScript.cshtml" />
     <Content Include="Views\Home\Assignments.cshtml" />
-    <Content Include="Views\Blog\Index.cshtml" />
-    <Content Include="Views\Blog\Create.cshtml" />
-    <Content Include="Views\Blog\Details.cshtml" />
-    <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\BlogPosts\Create.cshtml" />
     <Content Include="Views\BlogPosts\Delete.cshtml" />
     <Content Include="Views\BlogPosts\Details.cshtml" />
@@ -529,6 +534,10 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\BlogPosts\DetailsU.cshtml" />
+    <Content Include="Web1.config" />
+    <Content Include="Views\Account\ResendEmailConfirmation.cshtml" />
+    <Content Include="Views\Account\ConfirmationSent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

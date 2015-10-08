@@ -1,0 +1,17 @@
+GITHUB
+
+CLONE PATH : C:\Users\Hema\Documents\GitHub
+
+
+DEFAULT SHELL : POWERSHELL
+
+
+FULL NAME : Hema Mitra
+
+EMAIL : hemakolte@hotmail.com
+
+
+login id : hemamitra
+pwd : Ha----11
+
+link to account : https://github.com/HemaMitra

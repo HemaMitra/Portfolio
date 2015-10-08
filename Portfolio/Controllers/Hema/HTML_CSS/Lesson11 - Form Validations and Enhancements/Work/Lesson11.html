@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Lesson 11 - Form Validation and other Future HTML5 Form Enhancements</title>
+  <style type="text/css" media="all">
+    span {
+      width: 175px;
+      display:block;
+      float:left;
+    }
+    input {
+      float:left;
+    }
+    p {
+      padding-top:10px;
+      clear: all;
+    }
+    h2 {
+      padding-top:20px;
+      clear: all;
+    }
+    label {
+      padding-right:20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Creating Forms</h1>
+
+<form method="POST" action="form.aspx">
+
+<p><label><span>Email : </span><input type=email name='emailInput' required></label></p>
+<p><label><span>Telephone : </span><input type='tel' name='telInput' required></label></p>
+<p><label><span>Numeric : </span><input type='number' name='numInput' required></label></p>
+
+
+<p><label>
+<span>Datalist :</span>
+<input type=text list='list1'>
+<datalist id='list1'>
+  <option label='First' value='First'>
+  <option label='Second' value='Second'>
+  <option label='Third' value='Third'>
+</datalist>
+</label></p>
+
+<p>Autofocus : <input type='text' autofocus></p>
+<p>Required  : <input type='text' required></p>
+<p>Pattern   : <input type='text' pattern='7687587'></p>
+<p>PlaceHolder: <input type='text' placeholder='Hello World'></p>
+<p>Step      : <input type='number' step=5></p>
+<p><button>Submit</button></p>
+
+</form>
+
+</body>
+</html>

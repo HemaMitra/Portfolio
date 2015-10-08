@@ -1,0 +1,37 @@
+﻿<html>
+<head></head>
+<script type="text/javascript">
+function perfectNum(n) {
+        var temp = 0;
+        for (var i = 1; i <= n / 2; i++) 
+	{
+            if (n % i === 0)
+	    {
+                temp += i;
+            }
+        }
+        if (temp === n) 
+	{
+        	return true;
+        }
+	else 
+	{
+ 		return false;
+        }
+}
+    function dspPerfect(num) {
+        var displayHtml = document.getElementById('resultPerfect');
+        for (j = num; j < 10000; j++) {
+            if (perfectNum(j)) {
+              displayHtml.innerHTML += j + " is a Perfect Number" + "<br>";
+		
+            }
+        }
+    }
+
+</script>
+<body onLoad="">
+<button type='button' onClick="dspPerfect(6);">Get The Maximum Number</button>
+<div id="displayHtml"></div>
+</body>
+</html>   

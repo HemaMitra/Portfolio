@@ -1,0 +1,5 @@
+c:\users\bob tabor\documents\visual studio 2013\Projects\ComplexIfStatement\ComplexIfStatement\bin\Debug\ComplexIfStatement.exe.config
+c:\users\bob tabor\documents\visual studio 2013\Projects\ComplexIfStatement\ComplexIfStatement\bin\Debug\ComplexIfStatement.exe
+c:\users\bob tabor\documents\visual studio 2013\Projects\ComplexIfStatement\ComplexIfStatement\bin\Debug\ComplexIfStatement.pdb
+c:\users\bob tabor\documents\visual studio 2013\Projects\ComplexIfStatement\ComplexIfStatement\obj\Debug\ComplexIfStatement.exe
+c:\users\bob tabor\documents\visual studio 2013\Projects\ComplexIfStatement\ComplexIfStatement\obj\Debug\ComplexIfStatement.pdb

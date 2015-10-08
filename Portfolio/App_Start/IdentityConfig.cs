@@ -11,14 +11,40 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Portfolio.Models;
+using SendGrid;
+using System.Configuration;
+using System.Net.Mail;
+using System.Net;
 
 namespace Portfolio
 {
     public class EmailService : IIdentityMessageService
     {
+        //EmailService emailService = new EmailService();
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
+            // get the username and password from sendgrid            
+             var username = ConfigurationManager.AppSettings["SendGridUserName"];
+             var password = ConfigurationManager.AppSettings["SendGridPassword"];
+             var from = ConfigurationManager.AppSettings["ContactEmail"];
+            
+            // Configure the message to be sent
+            SendGridMessage myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new MailAddress(from);
+            myMessage.Subject = message.Subject;
+            myMessage.Html = message.Body;
+            
+            // Create credentials specifying username and password
+            var credentials = new NetworkCredential(username, password);
+            
+            // Create a web transport for sending email
+            var transportWeb = new Web(credentials);
+
+            // Send the email
+            transportWeb.DeliverAsync(myMessage);
+
             return Task.FromResult(0);
         }
     }

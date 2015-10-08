@@ -1,0 +1,13 @@
+﻿h1 {font-family:'Comic Sans MS';color:green;}
+.num {color:blue;}
+#resLabel {color:blueviolet;}
+
+.hoverIn
+{
+	background-color:green;color:yellow;
+}
+
+.hoverOut
+{
+		background-color:yellow;color:green;	
+}

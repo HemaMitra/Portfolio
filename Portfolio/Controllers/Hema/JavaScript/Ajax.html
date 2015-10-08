@@ -1,0 +1,31 @@
+﻿<html>
+<head>
+<script type="text/javascript">
+function loadXMLDoc(url)
+{
+	if (window.XMLHttpRequest)
+ 	{
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		 xmlhttp=new XMLHttpRequest();
+ 	}
+	else
+ 	{
+		// code for IE6, IE5
+ 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+ 	}
+	xmlhttp.open("GET",url,false);
+	xmlhttp.send(null);
+	document.getElementById('test').innerHTML=xmlhttp.responseText;
+}
+</script>
+</head>
+
+<body>
+<div id="test">
+	<h2>Clickto let AJAX change this text</h2>
+</div>
+<button type="button" onclick="loadXMLDoc('test1.txt')">ClickMe</button>
+<button type="button" onclick="loadXMLDoc('test2.txt')">ClickMe</button>
+
+</body>
+</html>

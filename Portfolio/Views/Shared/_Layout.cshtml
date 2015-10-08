@@ -45,7 +45,18 @@
                         <li>@Html.ActionLink("Experience", "Experience", "Home", null, new {@class = "class='smooth-scroll'"})</li>
                         <li>@Html.ActionLink("Blog", "Index", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "class='smooth-scroll'" })</li>
-                            
+        
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Admin", "AdminIndex", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
+                        }  
+                        @if (User.IsInRole("Moderator"))
+                        {
+                            <li>@Html.ActionLink("Moderator", "AdminIndex", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
+                        } 
+                        
+
+                                         
         </ul>
                 </div>
 
@@ -86,6 +97,7 @@
     <script src="~/Scripts/random.js"></script>
     <script src="~/Scripts/Factorial.js"></script>
     <script src="~/Scripts/animate.js"></script>
+    <script src="~/Scripts/jquery.dotdotdot.js"></script>
     <script src="~/Scripts/custom.js"></script>
 
     <!-- For IE 9

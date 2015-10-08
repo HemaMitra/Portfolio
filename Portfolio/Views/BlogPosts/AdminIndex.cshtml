@@ -8,62 +8,64 @@
 
 <p>
     @* If Logged In as Admin then only display Create New Blog link *@
-    @*@if(User.IsInRole("Admin"))
-    {*@
+    @if(User.IsInRole("Admin"))
+    {
         @Html.ActionLink("Create New Blog", "Create")
-    @*}*@
+    }
 </p>
-<table class="table">
+<table class="adminTable">
     <tr class="shadow colRed">
-        <th>
+        <th class="tr-admin">
             @Html.DisplayNameFor(model => model.Created)
         </th>
-        <th>
+        <th class="tr-admin">
             @Html.DisplayNameFor(model => model.Updated)
         </th>
-        <th>
+        <th class="tr-admin">
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
+        <th class="tr-admin">
             @Html.DisplayNameFor(model => model.Slug)
         </th>
-        <th>
+        <th class="tr-admin">
             @Html.DisplayNameFor(model => model.Body)
         </th>
-        <th>
+        <th class="tr-admin">
             @Html.DisplayNameFor(model => model.MediaURL)
         </th>
-        <th>
+        <th class="tr-admin">
             @Html.DisplayNameFor(model => model.Published)
         </th>
-        <th></th>
-    </tr>
+        <th class="tr-admin"></th>
+</tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
+    <tr class="tr-admin">
+        <td class="td-restrict tr-admin">
             @Html.DisplayFor(modelItem => item.Created)
         </td>
-        <td>
+        <td class="td-restrict tr-admin">
             @Html.DisplayFor(modelItem => item.Updated)
         </td>
-        <td>
+        <td class="tr-admin">
             @Html.DisplayFor(modelItem => item.Title)
         </td>
-        <td>
+        <td class="td-restrict tr-admin">
             @Html.DisplayFor(modelItem => item.Slug)
         </td>
-        <td>@Html.Raw(item.Body)
-        </td>
-        <td>
+        <td class="td-restrict tr-admin">
+            @Html.Raw(item.Body)
+    </td>
+        <td class="td-restrict tr-admin" align="center">
             @Html.DisplayFor(modelItem => item.MediaURL)
         </td>
-        <td>
+        <td class="tr-admin" align="center">
             @Html.DisplayFor(modelItem => item.Published)
         </td>
         <td>
+
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DetailsU", new { Slug = item.Slug }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>

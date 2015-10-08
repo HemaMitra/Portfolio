@@ -1,0 +1,2 @@
+c:\users\bob tabor\documents\visual studio 2013\Projects\ObjectLifetime\ObjectLifetime\bin\Debug\ObjectLifetime.exe.config
+c:\users\bob tabor\documents\visual studio 2013\Projects\ObjectLifetime\ObjectLifetime\obj\Debug\ObjectLifetime.csprojResolveAssemblyReference.cache

@@ -1,0 +1,53 @@
+ALLOWED VALUES IN ACTION DIAGRAM
+*	Activate/Inactivate construct (Comment out)       
+**	Place block Activate/Inactivate boundary          
+A	Place copied or moved construct after this line   
+B	Place copied or moved construct before this line  
+C	Copy construct to a point indicated by 'A' or 'B' 
+CC	Place block Copy boundary                         
+D	Delete this construct                             
+DD	Place block Delete boundary                       
+F	Edit action or condition details for line         
+FF	Edit action parameters                            
+H	Hide construct                                    
+I+	Insert *ADD built-in function                     
+I+F	Insert and Prompt *ADD built-in function          
+I*	Insert Comment                                    
+I*F	Insert and Prompt Comment                         
+I-	Insert *SUB built-in function                    
+I-F	Insert and Prompt *SUB built-in function         
+I=	Insert *MOVE built-in function                   
+I=A	Insert and Prompt *MOVE ALL built in function    
+I=F	Insert and Prompt *MOVE built-in fucntion        
+IA	Insert Action                                    
+IAF	Insert and prompt Action                         
+IC	Insert Case condition                            
+ICF	Insert and Prompt Case condition                 
+IE	Insert *EXIT PROGRAM function                    
+II	Insert Iteration                                 
+IIF	Insert and Prompt Iteration                      
+IM	Insert Message function                          
+IMF	Insert and Prompt Message function               
+IO	Insert *OTHERWISE condition                      
+IOF	Insert and prompt *OTHERWISE condition           
+IQ	Insert *QUIT function                            
+IS	Insert Sequence                                  
+ISF	Insert and Prompt Sequence                       
+IX	Insert New condition within Case                 
+IXF	Insert and Prompt New condition within Case      
+M	Move construct to a point indicated by 'A' or 'B'
+MM	Place block Move boundary                        
+N	Display narrative of selected object             
+NA	Copy to notepad & append to contents of notepad  
+NAA	Place block notepad append boundary              
+NI	Insert entire contents of notepad after this line
+NR	Copy to notepad & replace contents of notepad    
+NRR	Place block notepad replace boundary             
+PR	Display construct protection details             
+R	Display model references of selected object
+S	Show construct                             
+T	Return to top level of action diagram      
+U	Display model usages of selected object    
+V	View summary                               
+Z	Zoom into construct                        
+
