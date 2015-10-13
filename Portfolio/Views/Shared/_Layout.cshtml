@@ -12,6 +12,7 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/magnific-popup.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <!--<script src="~/Scripts/twitterFetcher_min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
 </head>
@@ -52,7 +53,7 @@
                         }  
                         @if (User.IsInRole("Moderator"))
                         {
-                            <li>@Html.ActionLink("Moderator", "AdminIndex", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
+                            <li>@Html.ActionLink("Moderator", "Index", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
                         } 
                         
 
@@ -98,6 +99,7 @@
     <script src="~/Scripts/Factorial.js"></script>
     <script src="~/Scripts/animate.js"></script>
     <script src="~/Scripts/jquery.dotdotdot.js"></script>
+    <script src="~/Scripts/jquery.scrollTo.js"></script>
     <script src="~/Scripts/custom.js"></script>
 
     <!-- For IE 9

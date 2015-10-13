@@ -11,6 +11,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
 </head>
@@ -42,8 +43,20 @@
                         <li>@Html.ActionLink("Profile", "AboutMe", "Home", null, new { @class = "class='smooth-scroll'" })</li>
                         <li>@Html.ActionLink("Portfolio", "Assignments", "Home", null, new { @class = "class='smooth-scroll'" })</li>
                         <li>@Html.ActionLink("Experience", "Experience", "Home", null, new {@class = "class='smooth-scroll'"})</li>
+                        <li>@Html.ActionLink("Blog", "Index", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "class='smooth-scroll'" })</li>
-                            
+        
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Admin", "AdminIndex", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
+                        }  
+                        @if (User.IsInRole("Moderator"))
+                        {
+                            <li>@Html.ActionLink("Moderator", "Index", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
+                        } 
+                        
+
+                                         
         </ul>
                 </div>
 
@@ -84,10 +97,9 @@
     <script src="~/Scripts/random.js"></script>
     <script src="~/Scripts/Factorial.js"></script>
     <script src="~/Scripts/animate.js"></script>
+    <script src="~/Scripts/jquery.dotdotdot.js"></script>
     <script src="~/Scripts/custom.js"></script>
 
-    
-   
     <!-- For IE 9
     <script src="~/Scripts/html5shiv.js"></script>
     <script src="~/Scripts/respond.min.js"></script>

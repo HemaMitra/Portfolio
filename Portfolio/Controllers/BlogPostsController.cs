@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Portfolio.Models;
+using System.IO;
+using Microsoft.AspNet.Identity;
 
 namespace Portfolio.Controllers
 {
@@ -26,6 +28,19 @@ namespace Portfolio.Controllers
         {
             return View(db.BlogPost.ToList());
         }
+
+        // Get Category
+
+        public ActionResult Category(string Category)
+        {
+            if (Category == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var res = db.BlogPost.Where(cat => cat.Category == Category);
+            return View(res.ToList());
+        }
+
 
          //GET: BlogPosts/Details/5
         public ActionResult DetailsU(string Slug)
@@ -54,8 +69,22 @@ namespace Portfolio.Controllers
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Created,Updated,Title,Slug,Body,MediaURL,Published")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Id,Created,Updated,Title,Slug,Body,MediaURL,Published,Category")] BlogPost blogPost,
+            HttpPostedFileBase image)
         {
+            // Upload images
+            if (image != null && image.ContentLength > 0)
+            {
+                // Check the file name to make sure its an image
+                var ext = Path.GetExtension(image.FileName).ToLower();
+
+                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
+                {
+                    ModelState.AddModelError("image", "Invalid Format");
+                }
+            }
+
+
             if (ModelState.IsValid)
             {
                 var Slug = StringUtilites.URLFriendly(blogPost.Title);
@@ -66,9 +95,27 @@ namespace Portfolio.Controllers
                 }
                 if(db.BlogPost.Any(p => p.Slug == Slug))
                 {
-                    ModelState.AddModelError("Title","The TitleMust Be Unique");
+                    ModelState.AddModelError("Title","The Title Must Be Unique");
                     return View(blogPost);
                 }
+                // Saving Image
+                if (image != null)
+                {
+                    // relative server path
+                    var filePath = "/Uploads/";
+
+                    // path on physical drive on server
+                    var absPath = Server.MapPath("~" + filePath);
+
+                    // media URL for relative path
+                    blogPost.MediaURL = filePath + "/" + image.FileName;
+
+                    // save image
+                    Directory.CreateDirectory(absPath);
+                    image.SaveAs(Path.Combine(absPath, image.FileName));
+
+                }
+
                 blogPost.Slug = Slug;
                 blogPost.Created = System.DateTimeOffset.Now;
                 blogPost.Updated = null;
@@ -100,17 +147,48 @@ namespace Portfolio.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Created,Updated,Title,Slug,Body,MediaURL,Published")] BlogPost blogPost)
+        public ActionResult Edit([Bind(Include = "Id,Title,Body,MediaURL,Published,Category")] BlogPost blogPost,HttpPostedFileBase image)
         {
+            // Upload images
+            if (image != null && image.ContentLength > 0)
+            {
+                // Check the file name to make sure its an image
+                var ext = Path.GetExtension(image.FileName).ToLower();
+
+                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".gif" && ext != ".bmp")
+                {
+                    ModelState.AddModelError("image", "Invalid Format");
+                }
+            }
+
+
+            // Edit Blog
             if (ModelState.IsValid)
             {
-                blogPost.Updated = System.DateTimeOffset.Now;
-                db.BlogPost.Attach(blogPost);
-                //db.Entry(blogPost).Property("Title").IsModified = true;
-                //db.Entry(blogPost).Property("Slug").IsModified = true;
+
+                // Saving Image
+                if (image != null)
+                {
+                    // relative server path
+                    var filePath = "/Uploads/";
+
+                    // path on physical drive on server
+                    var absPath = Server.MapPath("~" + filePath);
+
+                    // media URL for relative path
+                    blogPost.MediaURL = filePath + "/" + image.FileName;
+
+                    // save image
+                    image.SaveAs(Path.Combine(absPath, image.FileName));
+
+                }
                 
+                blogPost.Updated = System.DateTimeOffset.Now;
+                
+                db.BlogPost.Attach(blogPost);
+
                 db.Entry(blogPost).Property("Body").IsModified = true;
                 db.Entry(blogPost).Property("MediaURL").IsModified = true;
                 db.Entry(blogPost).Property("Updated").IsModified = true;
@@ -118,10 +196,10 @@ namespace Portfolio.Controllers
                 
                 //db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("AdminIndex");
+                //return RedirectToAction("AdminIndex");
+                return RedirectToAction("Index");
             }
             return View(blogPost);
-           
         }
 
         // GET: BlogPosts/Delete/5
@@ -148,9 +226,26 @@ namespace Portfolio.Controllers
             BlogPost blogPost = db.BlogPost.Find(id);
             db.BlogPost.Remove(blogPost);
             db.SaveChanges();
-            return RedirectToAction("AdminIndex");
+            //return RedirectToAction("AdminIndex");
+            return RedirectToAction("Index");
         }
-        
+
+        [HttpPost]
+        public ActionResult CreateComment(Comment Comment,string Slug)
+        {
+            if (ModelState.IsValid)
+            {
+                Comment.Created = System.DateTimeOffset.Now;
+                Comment.AuthorId = User.Identity.GetUserId();
+                Comment.Updated = null;
+                db.Comments.Add(Comment);
+                db.SaveChanges();
+            }
+            return RedirectToAction("DetailsU", "BlogPosts", new {Slug = Slug});
+        }
+
+       
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

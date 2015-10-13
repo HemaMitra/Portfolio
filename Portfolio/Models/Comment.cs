@@ -12,8 +12,8 @@
         public System.DateTimeOffset Created { get; set; }
         public Nullable<System.DateTimeOffset> Updated { get; set; }
         //public System.DateTimeOffset? Updated { get; set; } same as above statement
-        public string UpdateReason { get; set; }
-        public bool display { get; set; }
+        //public string Email { get; set; }
+        //public bool display { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
         public virtual BlogPost Post { get; set; }

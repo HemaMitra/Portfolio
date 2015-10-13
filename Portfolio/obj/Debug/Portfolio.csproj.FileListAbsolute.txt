@@ -55,3 +55,5 @@ c:\users\hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\obj\Debu
 c:\users\hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\obj\Debug\Portfolio.pdb
 C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\SendGrid.SmtpApi.dll
 C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\SendGridMail.dll
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\Connections.config
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\Web1.config

@@ -3,37 +3,25 @@
 @{
     ViewBag.Title = "Blog Index";
 }
-<script src="~/Scripts/jquery.dotdotdot.js"></script>
+<br>
+<h3 class="asmthead fade-toggle">Blogs</h3>
 <!-- SUBHEADER -->
 <div class="subheader">
     <div class="container">
         <div class="row">
-
-        <br><br><br>
             <div class="col-md-8 col-sm-8">
-
-               @* <!-- Breadcrumb -->
-    <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li class="active">Blog</li>
-    </ol>*@
-
             </div>
-
             <div class="col-md-4 col-sm-4">
-
                 <!-- Search Form -->
                 <form class="blog-search">
                     <input type="text" class="form-control" id="blog-search" placeholder="Search article...">
                 </form>
-
             </div>
 
         </div><!-- .row -->
     </div><!-- .container -->
 </div>
 <!-- SUBHEADER END -->
-
 <!-------------------------------------------------------------------->
 
 <div id="main" class="container">
@@ -47,12 +35,17 @@
                 {    
                 <article class="blog-post">
                     <h2 class="blog-title shadow colRed"><a href="#">@Html.DisplayFor(modelItem => item.Title)</a></h2>
-                    <img class="blog-thumb" src="@item.MediaURL" alt="">
+                    @if (item.MediaURL != null)
+                    {
+                        <img class="img-responsive" src="@item.MediaURL" alt="">
+                    }
+                    
+                    <!--<img class="blog-thumb" src="@item.MediaURL" alt="">-->
 
                     <div class="blog-meta  blog-calfont">
                         <ul class="list-inline list-unstyled">
-                            <li><i class="fa fa-calendar"></i> @Html.DisplayFor(modelItem => item.Created)</li>
-                            <li><i class="fa fa-comments"></i> <a href="#">10</a></li>
+                            <li><i class="fa fa-calendar colBlack"></i> @Html.DisplayFor(modelItem => item.Created)</li>
+                            <li><i class="fa fa-comments colBlack"></i> <a href="#">@item.Comments.Count</a></li>
                             
                                 @if(User.IsInRole("Admin"))
                                 {
@@ -60,11 +53,10 @@
                                    <li>@Html.ActionLink("Delete", "Delete", new { id=item.Id })</li>
                                     
                                 }
-                            
                         </ul>
                     </div>
                     
-                    <div class="wrap">
+                    <div class="wrap colBlack blog-txtSize">
                         @Html.Raw(item.Body)
                     </div>
                     <a class="pull-right" href="@Url.Action("DetailsU",new {Slug = item.Slug})">
@@ -96,15 +88,20 @@
             <!-- BLOG POST END -->
 
 </div>
-
         <div class="col-md-5 col-xs-6">
             <div class="sidebar-wrap">
                     <h3 class="sidebar-title shadow colRed">Category</h3>
-
                     <ul class="fa-ul sidebar-list">
-                        <li><i class="fa-fw fa-li fa fa-folder-open"></i><a href="#">Chat (10)</a></li>
-                        <li><i class="fa-fw fa-li fa fa-folder-open"></i><a href="#">Web Development (5)</a></li>
-                        <li><i class="fa-fw fa-li fa fa-folder-open"></i><a href="#">Work (21)</a></li>
+                        <li><i class="fa-fw fa-li fa fa-folder-open"></i>
+                            <a href="@Url.Action("Category",new {Category = "MasterClass"})">
+                            Master Class
+                        </a>
+                        </li>
+                        <li><i class="fa-fw fa-li fa fa-folder-open"></i>
+                            <a href="@Url.Action("Category",new {Category = "General"})">
+                                General
+                            </a>
+                        </li>
                     </ul>
             </div>
 
@@ -112,25 +109,29 @@
 
             <div class="sidebar-wrap">
                 <h3 class="sidebar-title shadow colRed">User</h3>
-                
+           
+                <!-- LogOff -->
+                     
                 @if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-            @Html.AntiForgeryToken()
+                {
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
                     
-
-                    <!--<ul class="nav navbar-nav navbar-right">-->
-    <div class="col-md-12 col-xs-12">
-        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </div>
+                        <!--<ul class="nav navbar-nav navbar-right">-->
+                        <div class="col-md-12 col-xs-12 sidebar-btn">
+                               @Html.ActionLink("Hello " + User.Identity.GetUserName() + " !", "Index", "Manage", routeValues: null, 
+                                htmlAttributes: new { title = "Manage" })
+                            
+                        </div>
                     
-        <br><br>
-    <div class="col-md-12 col-xs-12">
-        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger sidebar-btn">Log off</a>
-    </div>
-    }
-}
+                        <br><br>
+                        <div class="col-md-12 col-xs-12 sidebar-btn">
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger sidebar-btn">
+                            Log off</a>
+                        </div>
+                    }
+                }
                 else
                 {
                     <div class="col-md-12 col-xs-12">
@@ -164,7 +165,7 @@
             /*	How to cut off the text/html: 'word'/'letter'/'children' */
 		    wrap : 'word',
             /*	Optionally set a max-height, if null, the height will be measured. */
-		    height	: 30
+		    height	: 20
 	    });
     });
     </script>

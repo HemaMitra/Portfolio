@@ -53,3 +53,7 @@ C:\Users\Hema\Documents\Visual Studio 2013\Projects\Portfolio\Portfolio\bin\Micr
 C:\Users\Hema\Documents\Visual Studio 2013\Projects\Portfolio\Portfolio\obj\Release\Portfolio.csprojResolveAssemblyReference.cache
 C:\Users\Hema\Documents\Visual Studio 2013\Projects\Portfolio\Portfolio\obj\Release\Portfolio.dll
 C:\Users\Hema\Documents\Visual Studio 2013\Projects\Portfolio\Portfolio\obj\Release\Portfolio.pdb
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\SendGrid.SmtpApi.dll
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\SendGridMail.dll
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\Connections.config
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\Web1.config

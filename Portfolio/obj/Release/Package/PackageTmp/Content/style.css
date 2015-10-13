@@ -1259,7 +1259,12 @@ code, pre {
   ------------------------------------*/
 .blog-post {
   overflow: auto;
-  padding-bottom: 40px;
+  padding-bottom: 20px; /* Padding changed from 40 to 20 by Hema */ 
+}
+
+.blog-calfont {
+    font-size:10px;
+    text-align:left;
 }
 
 .blog-title {
@@ -1269,7 +1274,7 @@ code, pre {
 }
 
 .blog-thumb {
-  width: 100%;
+  width: 100%; /* Width changed from 100 to 80 by Hema */ 
   margin-bottom: 20px;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
@@ -1277,12 +1282,12 @@ code, pre {
 }
 
 .blog-meta {
-  height: 48px;
+  height: 30px; /*height 30 from 48 by Hema*/
   margin-bottom: 20px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  text-align: center;
-  line-height: 48px;
+  text-align: left; /* center by Hema */
+  line-height: 30px; /* 30 from 48 by Hema */
   vertical-align: middle;
 }
 
@@ -1393,8 +1398,12 @@ code, pre {
   background: #fafafa;
   padding: 5px;
   font-size: 18px;
+  margin-left:125px; /*Added by Hema*/
 }
 
+.sidebar-btn {
+margin-left:125px;
+}
 .sidebar-title:before {
   content: "";
   position: absolute;
@@ -1403,11 +1412,16 @@ code, pre {
   display: block;
   width: 6px;
   height: 100%;
-  background: #f5f5f5;
+  /* Added by Hema
+      background: #f5f5f5*/
+  margin-left:125px;
+  
 }
 
 .sidebar-list > li {
   margin-bottom: 10px;
+  /* Added by Hema */
+  margin-left:125px;
 }
 
 .blog-single .pager {
@@ -2043,6 +2057,28 @@ code, pre {
 
 /*Added by Hema*/
 
+.td-restrict {
+white-space: nowrap; 
+overflow: hidden; 
+text-overflow: ellipsis;
+}
+
+.tr-admin {
+    border:1px solid #b5b5b5;
+}
+
+.adminTable {
+border:1px solid #b5b5b5;
+width: 98%; table-layout:fixed;
+white-space:nowrap; margin-left:10px;
+margin-right:10px;
+}
+
+
+.adminPadding {
+padding-left:10px;
+}
+
 .fade-toggle{
  text-shadow: 0 2px 5px rgba(0, 0, 0, .15);   
 }
@@ -2075,6 +2111,10 @@ text-shadow: 0 5px 2px rgba(0,0,0,.15);
 text-align:center;
 }
 
+.blog-txtSize {
+    font-size:12px;
+}
+
 .asmthead {
     text-align: center;
     line-height: 60px;
@@ -2098,7 +2138,7 @@ text-align:center;
 
 }
    
-}
+
 /* End Hema */
 /*------------------------------------ 
   [FOS] FOOTER STYLE 
@@ -2217,6 +2257,7 @@ text-align:center;
   .sidebar-wrap {
     margin-left: 12px;
   }
+
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -2354,7 +2395,7 @@ text-align:center;
   }
 	
   .timeline > li.year {
-    padding: 40px 0 40prespx;
+    padding: 40px 0 40px;
   }
   
   .blog-page .subheader {
@@ -2429,4 +2470,4 @@ text-align:center;
     width: 90%;
     margin-left: 5%;	
   }
-}bg-
+}
