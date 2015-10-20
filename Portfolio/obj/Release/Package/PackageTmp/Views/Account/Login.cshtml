@@ -11,8 +11,10 @@
            "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
-            <h4>Use a local account to log in.</h4>
-            <hr />
+              <br><br><br>
+            <h4 class="sidebar-btn"><u>Use a local account to log in.</u></h4>
+              <br>
+            
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -40,22 +42,28 @@
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Log in" class="btn btn-danger" />
                     @Html.ActionLink("Register as a new user", "Register", null, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "btn btn-danger" }) 
                 </div>
             </div>
-            
-            @* Enable this once you have account confirmation enabled for password reset functionality
-                <p>
-                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                </p>*@
-            }
-        </section>
+
+                //Enable this once you have account confirmation enabled for password reset functionality
+                // <p>
+                    //   @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    //
+                //</p>
+                }
+</section>
     </div>
-    @*<div class="col-md-4">
-        <section id="socialLoginForm">
+    
+     <div class="col-md-4">
+      </div><br><br><br>
+    <div class="col-md-12">
+        <section id="socialLoginForm" class="sidebar-btn">
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
-    </div>*@
-</div>
+        </div>
+
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

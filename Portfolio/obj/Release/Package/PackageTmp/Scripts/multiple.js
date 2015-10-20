@@ -1,5 +1,5 @@
 $('body').on('click', '#fndFizz', function () {
-    
+   
     var num = 1;
     var arr = new Array(100);
     
@@ -22,9 +22,9 @@ $('body').on('click', '#fndFizz', function () {
     num = 0;
     // Generating table at run time
     var table = document.createElement("TABLE");
-    table.border = 2;
-    table.cellPadding = 5;
-    table.cellSpacing = 5;
+    table.border = 1;
+    table.cellPadding = 10;
+    table.cellSpacing = 10;
     // Add rows to the table
     for (var rowCnt = 0; rowCnt < 10; rowCnt++) {
         var row = table.insertRow(-1);
@@ -40,7 +40,9 @@ $('body').on('click', '#fndFizz', function () {
     var divTab = document.getElementById("divTab");
     divTab.innetHTML = "";
     divTab.appendChild(table);
+
     $('#divTab').show();
+    $('#fndFizz').prop("disabled",true);       
 });
 
 

@@ -12,7 +12,7 @@
         public System.DateTimeOffset Created { get; set; }
         public Nullable<System.DateTimeOffset> Updated { get; set; }
         //public System.DateTimeOffset? Updated { get; set; } same as above statement
-        //public string Email { get; set; }
+        public string UpdatedBy { get; set; }
         //public bool display { get; set; }
 
         public virtual ApplicationUser Author { get; set; }

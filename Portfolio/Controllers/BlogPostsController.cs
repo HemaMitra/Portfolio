@@ -9,18 +9,68 @@ using System.Web.Mvc;
 using Portfolio.Models;
 using System.IO;
 using Microsoft.AspNet.Identity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Portfolio.Controllers
 {
+    [RequireHttps]
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: BlogPosts
-        public ActionResult Index()
+        // Get: BlogPosts
+        
+        public ActionResult Index(int? page, string query, string category)
         {
-            return View(db.BlogPost.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                ViewBag.query = query;
+            }
+            if (!string.IsNullOrWhiteSpace(category))
+            {
+                ViewBag.category = category;
+            }
+
+            var qry = db.BlogPost.AsQueryable();
+
+
+            // If query is not blank split the string and search for all the words
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                char[] delimiters = { ' ', '-', ',' };
+                string[] splitQry = query.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+                if (splitQry.Length > 0)
+                {
+                    qry = qry.Where(t => splitQry.Any( q=> t.Title.Contains(q)) ||
+                               splitQry.Any( q=> t.Body.Contains(q)) || splitQry.Any( q=> t.Category.Contains(q)) ||
+                               splitQry.Any( q=> t.Comments.Any(c=>c.Body.Contains(q)))).Distinct();
+                    
+                       //qry = qry.Where(t => ((t.Title).Contains(iqry) || (t.Slug).Contains(iqry) ||
+                       //        (t.Body).Contains(iqry) || (t.Category).Contains(iqry) ||
+                       //        (t.Comments).Any(c => (c.Body).Contains(iqry)))).ToList();
+                    
+                }
+            }
+            //else
+            //{
+            //    qry = !string.IsNullOrWhiteSpace(query) ? qry.Where
+            //                                                        (t => ((t.Title).Contains(query) || (t.Slug).Contains(query) ||
+            //                                                        (t.Body).Contains(query) || (t.Category).Contains(query) ||
+            //                                                        (t.Comments).Any(c => (c.Body).Contains(query)))).ToList() : qry;
+            //}
+            // look for the category if the user clicks on one
+            qry = !string.IsNullOrWhiteSpace(category) ? qry.Where(cat => cat.Category == category): qry;
+
+            return View(qry.OrderByDescending(p => p.Created).ToPagedList(pageNumber, pageSize));
         }
+
+
 
         // AdminIndex Controller Action
         [Authorize(Roles="Admin")]
@@ -29,19 +79,7 @@ namespace Portfolio.Controllers
             return View(db.BlogPost.ToList());
         }
 
-        // Get Category
-
-        public ActionResult Category(string Category)
-        {
-            if (Category == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var res = db.BlogPost.Where(cat => cat.Category == Category);
-            return View(res.ToList());
-        }
-
-
+       
          //GET: BlogPosts/Details/5
         public ActionResult DetailsU(string Slug)
         {
@@ -196,7 +234,6 @@ namespace Portfolio.Controllers
                 
                 //db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
-                //return RedirectToAction("AdminIndex");
                 return RedirectToAction("Index");
             }
             return View(blogPost);
@@ -244,9 +281,57 @@ namespace Portfolio.Controllers
             return RedirectToAction("DetailsU", "BlogPosts", new {Slug = Slug});
         }
 
-       
+        [Authorize(Roles = "Admin, Moderator")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditComment(int id,string Slug,string Body)
+        {
+            // Edit Comment
+            if (ModelState.IsValid)
+            {
+                Comment Comment = db.Comments.Find(id);
+                Comment.UpdatedBy = User.Identity.Name;
+                Comment.Updated = System.DateTimeOffset.Now;
+                Comment.Body = Body;
+                db.Comments.Attach(Comment);
+
+                db.Entry(Comment).Property("Body").IsModified = true;
+                db.Entry(Comment).Property("Updated").IsModified = true;
+                db.Entry(Comment).Property("UpdatedBy").IsModified = true;
+                db.SaveChanges();
+            }
+            return RedirectToAction("DetailsU", "BlogPosts", new { Slug = Slug });
+        }
+        
+        [Authorize(Roles = "Admin, Moderator")]
+        public ActionResult DeleteComment(int id,string Slug)
+        {
+            Comment Comment = db.Comments.Find(id);
+            db.Comments.Remove(Comment);
+            db.SaveChanges();
+            //return RedirectToAction("AdminIndex");
+            return RedirectToAction("DetailsU", "BlogPosts", new { Slug = Slug });
+        }
+
+        public ActionResult DeletePhoto(string MediaUrl,int id)
+        {
+            string fullPath = Request.MapPath(MediaUrl);
+            FileInfo file = new FileInfo(fullPath);
+
+            BlogPost blogPost = db.BlogPost.Find(id);
+
+            if (file.Exists)
+            {
+                file.Delete();
+                blogPost.MediaURL = null;
+                db.BlogPost.Attach(blogPost);
+                db.Entry(blogPost).Property("MediaURL").IsModified = true;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Delete", "BlogPosts", new {id = id });
+        }
 
         protected override void Dispose(bool disposing)
+
         {
             if (disposing)
             {

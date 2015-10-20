@@ -10,11 +10,13 @@ using Portfolio.Models;
 
 namespace Portfolio.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -224,6 +226,7 @@ namespace Portfolio.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -232,10 +235,21 @@ namespace Portfolio.Controllers
             if (result.Succeeded)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var user1 = db.Users.Find(User.Identity.GetUserId());
                 if (user != null)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
+                 // Hema
+                if (User.IsInRole("Moderator") && user1.PwdChgFlag == true)
+                {
+                    user1.PwdChgFlag = false;
+
+                    db.SaveChanges();
+                    
+                    return RedirectToAction("Index", "BlogPosts");
+                }
+                //// End Hema
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);

@@ -1,10 +1,11 @@
-﻿@model IEnumerable<Portfolio.Models.BlogPost>
+﻿@model IPagedList<Portfolio.Models.BlogPost>
 @using Microsoft.AspNet.Identity
+@using PagedList
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Category";
 }
-<br>
-<h3 class="asmthead fade-toggle">Blogs</h3>
+
 <!-- SUBHEADER -->
 <div class="subheader">
     <div class="container">
@@ -45,7 +46,7 @@
                             <div class="blog-meta  blog-calfont">
                                 <ul class="list-inline list-unstyled">
                                     <li><i class="fa fa-calendar colBlack"></i> @Html.DisplayFor(modelItem => item.Created)</li>
-                                    <li><i class="fa fa-comments colBlack"></i> <a href="#">10</a></li>
+                                    <li><i class="fa fa-comments colBlack"></i>@item.Comments.Count</li>
 
                                     @if (User.IsInRole("Admin"))
                                     {
@@ -67,25 +68,7 @@
                     }
                     continue;
                 }
-                <!-- Pagination -->
-                <nav class="text-right">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
+           
             </div>
             <!-- BLOG POST END -->
 
@@ -148,6 +131,18 @@
 
                 }
 
+            </div>
+
+            <div class="sidebar">
+                @* Pagination *@
+                <div class="sidebar-wrap1">
+
+                    <h3 class="sidebar-title shadow colRed1">Browse Through</h3>
+                    <div class="sidebar-btn">
+                        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    </div>
+                </div>
             </div>
 
             @*<div class="sidebar-wrap">

@@ -12,8 +12,10 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/magnific-popup.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
     <!--<script src="~/Scripts/twitterFetcher_min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
     
 </head>
 <body data-spy="scroll" data-target="#main-nav">
@@ -46,19 +48,34 @@
                         <li>@Html.ActionLink("Experience", "Experience", "Home", null, new {@class = "class='smooth-scroll'"})</li>
                         <li>@Html.ActionLink("Blog", "Index", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "class='smooth-scroll'" })</li>
-        
                         @if (User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Admin", "AdminIndex", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
-                        }  
-                        @if (User.IsInRole("Moderator"))
-                        {
-                            <li>@Html.ActionLink("Moderator", "Index", "BlogPosts", null, new { @class = "class='smooth-scroll'" })</li>
-                        } 
-                        
+                        }
+                            </ul>
+                        @* Hema *@
 
-                                         
-        </ul>
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                </ul>
+                            }
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null,htmlAttributes: new { id = "loginLink" })
+                                </li>
+                            </ul>
+                        }
+
+                            @* Hema *@
+
                 </div>
 
             </nav><!-- .container -->

@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Portfolio.Models.BlogPost>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Search Blog";
+}
+<body class="blog-page blog-single">
+<div id="main" class="container">
+    <div class="row">
+          <div class="col-md-8 col-sm-8">
+            <!-- BLOG POST -->
+            <div class="blog">
+                <ul>
+                @foreach (var item in Model)
+                {
+                    if (item.Published == true)
+                    {   
+                            <li>   
+                            <h4 class="blog-title">@Html.DisplayFor(modelItem => item.Title)</h4>
+                            
+                            <div class="wrap1 colBlack blog-txtSize">
+                                @Html.Raw(item.Body)
+                            </div>
+                            <a class="pull-right" href="@Url.Action("DetailsU",new {Slug = item.Slug})">
+                                <i>continue reading &nbsp;<i class="fa fa-angle-double-right"></i></i>
+                            </a>
+                                </li>
+                    }
+                    continue;
+                }
+                    </ul>
+            </div>
+                   <!-- BLOG POST END -->
+        </div><!--col-md-8 end-->
+
+        <div class="col-md-4 col-sm-8">
+
+            <!-- Search Form -->
+            <div class="sidebar">
+                <div class="sidebar-wrap1">
+                    <form action="@Url.Action("SearchBlog")" method="post" enctype="multipart/form-data" role="form" class="blog-search">
+                        <input type="text" class="form-control" id="blog-search" name="query" placeholder="Search article...">
+                    </form>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar-wrap1">
+                    <h3 class="sidebar-title shadow colRed1">Category</h3>
+                    <ul class="fa-ul sidebar-list">
+                        <li>
+                            <i class="fa-fw fa-li fa fa-folder-open"></i>
+                            <a href="@Url.Action("Category",new {Category = "MasterClass"})">
+                                Master Class
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa-fw fa-li fa fa-folder-open"></i>
+                            <a href="@Url.Action("Category",new {Category = "General"})">
+                                General
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="sidebar">
+                @*For LogIn and Register *@
+                <div class="sidebar-wrap1">
+
+                    <h3 class="sidebar-title shadow colRed1">User</h3>
+
+                    <!-- LogOff -->
+                    @if (Request.IsAuthenticated)
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                        <!--<ul class="nav navbar-nav navbar-right">-->
+                            <div class="col-md-12 col-xs-12 sidebar-btn">
+                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + " !", "Index", "Manage", routeValues: null,
+                                htmlAttributes: new { title = "Manage" })
+
+                            </div>
+
+                            <br><br>
+                            <div class="col-md-12 col-xs-12">
+                                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger sidebar-btn">
+                                    Log off
+                                </a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-md-12 col-xs-12">
+                            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-danger sidebar-btn" })<br><br>
+                            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-danger sidebar-btn" })
+                        </div>
+
+                    }
+                </div>
+            </div>
+    
+
+        </div><!--col-md-4 end-->
+                @*<div class="sidebar-wrap1">
+                <h3 class="sidebar-title">Twitter Widget</h3>
+
+                <div id="twitter-widget" class="twitter-widget" data-widget-id="347099293930377217" data-widget-length="3"></div>
+            </div>*@
+
+            
+    
+    </div> <!-- Row end -->
+</div><!-- Container end -->
+</body>
+@section scripts
+{
+                <script>
+                    $(document).ready(function () {
+                        $(".wrap1").dotdotdot({
+                            /*	to add ... */
+                            ellipsis: '... ',
+                            /*	How to cut off the text/html: 'word'/'letter'/'children' */
+                            wrap: 'word',
+                            /*	Optionally set a max-height, if null, the height will be measured. */
+                            height: 20
+                        });
+                    });
+                </script>
+            }
+
+
+
+

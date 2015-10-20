@@ -57,3 +57,8 @@ C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\Send
 C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\SendGridMail.dll
 C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\Connections.config
 C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\Web1.config
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\Owin.Security.Providers.dll
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\PagedList.dll
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\PagedList.Mvc.dll
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\PagedList.xml
+C:\Users\Hema\documents\visual studio 2013\Projects\Portfolio\Portfolio\bin\PagedList.Mvc.xml

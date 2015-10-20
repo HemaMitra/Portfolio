@@ -1,22 +1,18 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Portfolio.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "";
-
             return View();
         }
 
@@ -60,6 +56,25 @@ namespace Portfolio.Controllers
             ViewBag.Message = "Blogs";
 
             return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(string name,string email,string subject,string message)
+        {
+            IdentityMessage msg = new IdentityMessage();
+            EmailService ems = new EmailService();
+
+            msg.Subject = subject;
+            msg.Destination = ConfigurationManager.AppSettings["ContactEmail"];
+            msg.Body = "From : " + name + "<BR> Email : " + email + "<BR> Message : " + message;
+            ems.SendAsync(msg);
+            TempData["Message"] = "Your Message Has Been Sent.";
+            return RedirectToAction("Contact");
         }
 
     }

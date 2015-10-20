@@ -9,7 +9,7 @@
     <h3 class="asmthead fade-toggle">Create a new account.</h3>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
+<div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-3">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
@@ -30,6 +30,7 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-danger" value="Register" />
+                 <a id="back" class="btn btn-danger" href="javascript:history.go(-1)">Back</a>
         </div>
     </div>
 }

@@ -1262,13 +1262,15 @@ code, pre {
 
 .blog-post {
   overflow: auto;
-  padding-bottom: 20px; /* Padding changed from 40 to 20 by Hema */ 
+  padding-bottom: 10px; /* Padding changed from 40 to 10 by Hema */ 
 }
 
 /*Added by Hema*/
+
 .blog-postDet {
   overflow: auto;
 }
+
 .blog-comments {
       overflow:visible;
       position:absolute;
@@ -1281,7 +1283,7 @@ code, pre {
 
 .blog-title {
   margin-bottom: 20px;
-  font-size: 22px;
+  font-size: 18px; /* changed from 22 to 18 by Hema */
   text-align: center;
 }
 
@@ -1408,7 +1410,7 @@ code, pre {
 
 .blog-page .sidebar {
   margin-left: -30px;
-  padding-top: 80px;
+  padding-top: 10px; /* 30 t0 10 */
 }
 
 .sidebar-wrap {
@@ -1416,19 +1418,30 @@ code, pre {
   margin-left: 10px;
 }
 
+.sidebar-wrap1 {/*Added by Hema*/
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
 .sidebar-title {
   position: relative;
   background: #fafafa;
   padding: 5px;
-  font-size: 18px;
-  margin-left:90px; /*Added by Hema*/
+  font-size: 16px;
+  margin-left:0px; /*Added by Hema*/
 }
 
-
+.sidebar-pad {
+    padding-bottom:100px;
+}
 
 .sidebar-btn {
-margin-left:125px;
+margin-left:135px;
 }
+.sidebar-btn1 {
+margin-left:35px;
+}
+
+
 .sidebar-title:before {
   content: "";
   position: absolute;
@@ -1445,8 +1458,13 @@ margin-left:125px;
 
 .sidebar-list > li {
   margin-bottom: 10px;
-  /* Added by Hema */
-  margin-left:125px;
+  /* Added by Hema 
+  margin-left:200px;*/
+}
+
+.margin-left1{
+    margin-left:200px;
+
 }
 
 .blog-single .pager {
@@ -1501,6 +1519,18 @@ margin-left:125px;
   margin: 40px 0;
 }
 
+.blogWrapper {
+    margin-bottom: 50px;
+}
+
+/* Added by Hema */
+.margin-top1 {
+    margin-top:55px;
+}
+.form-block {
+display:block;
+
+}
 
 /*------------------------------------ 
   [TWT] TWITTER WIDGET 
@@ -2170,16 +2200,18 @@ text-align:center;
 
 .modal-header{
     background-color:#fafafa;
-
 }
-   
+
+.fixed-pos {
+    position:fixed;
+}   
 
 /* End Hema */
 /*------------------------------------ 
   [FOS] FOOTER STYLE 
   ------------------------------------*/
 .main-footer {
-  height: 50px;
+  height: 40px;/* changed from 50 to 40 */
   background: #fafafa;
   border-top: 2px solid #eee;
   font-family: "Droid Sans", sans-serif;

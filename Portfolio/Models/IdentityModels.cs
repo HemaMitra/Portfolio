@@ -16,7 +16,8 @@ namespace Portfolio.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string DisplayName { get; set; }
-
+        public bool PwdChgFlag { get; set; }
+                
         // Default Constructor
         public ApplicationUser()
         {

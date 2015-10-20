@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Portfolio.Models;
+using Owin.Security.Providers.LinkedIn;
 
 namespace Portfolio
 {
@@ -54,15 +55,19 @@ namespace Portfolio
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "429273700611198",
+               appSecret: "f94119990c35ac94b6c5786f9690453f");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "443007467224-6v0deucnhl58hum8t9tqn4vgurgpoi5t.apps.googleusercontent.com",
+                ClientSecret = "R2RGqYO7LUNywG6NQE0uFZqb"
+            });
+
+            app.UseLinkedInAuthentication(
+               "7777f73w59l6r0",
+               "yBSVrYKpRjUFdf2H");
         }
     }
 }

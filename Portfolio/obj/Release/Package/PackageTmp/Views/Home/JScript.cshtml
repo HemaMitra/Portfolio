@@ -63,8 +63,8 @@
                                 No5 : <input type='number' id='N5' size='10' value=0 class='required form-control1'><br>
                                 <hr>
                                 <center>
-                                    <button type='button' id="FndMax" class="btn btn-lg btn-danger">Get The Maximum Number</button>
-                                    <button type='button' id="ClrMax" class="btn btn-lg btn-danger">Clear</button>
+                                    <button type='button' id="FndMax" class="btn btn-danger">Get The Maximum Number</button>
+                                    <button type='button' id="ClrMax" class="btn btn-danger">Clear</button>
                                 </center>
                                 <h4 id='MAXNO' class="jsClearOnExit"></h4>
 
@@ -134,9 +134,9 @@ $('body').on('click', '#FndMax', function () {
 
                             Enter word :
                             <input type='TEXT' id='paliTxt' size=10 value='' class="form-control1">
-
-                            <button type='button' id='FndPali' class="btn btn-lg btn-danger">Check Palindrome</button>
-                            <button type='button' id='ClrPali' class="btn btn-lg btn-danger">Clear</button>
+                            <br><br>
+                            <button type='button' id='FndPali' class="btn btn-danger">Check Palindrome</button>
+                            <button type='button' id='ClrPali' class="btn btn-danger">Clear</button>
                             <hr>
 
                             <div id="Pali" class="jsClearOnExit"><h4></h4></div>
@@ -214,7 +214,7 @@ $('body').on('click', '#FndMax', function () {
 
                             <h4>Click below button to generate numbers</h4>
 
-                            <button type="button" id="fndFizz" class="btn btn-lg btn-danger">Find fizzzz</button>
+                            <button type="button" id="fndFizz" class="btn btn-danger">Find fizzzz</button>
                             <hr>
                             <font size='2'>
                                 <center>
@@ -288,7 +288,7 @@ $('body').on('click', '#fndFizz', function () {
 
                             <h3>Addition and multiplication of numbers in the array</h3>
                             <hr>
-                            <button type="button" id="fndRand" class="btn btn-lg btn-danger">Generate Numbers</button>
+                            <button type="button" id="fndRand" class="btn btn-danger">Generate Numbers</button>
                             <br><hr>
                             <h4 id='arrno' class="jsClearOnExit"></h4><br>
                             <h4 id='addDiv' class="jsClearOnExit"></h4><br>
@@ -353,8 +353,8 @@ $('body').on('click', '#fndRand', function () {
                             Enter a number :
                             <input type='NUMBER' id='txtFact' size=10 value='' class="form-control1"><br><br>
 
-                            <button type='BUTTON' id='fndFact' class="btn btn-lg btn-danger disab">Get Factorial</button>
-                            <button type='BUTTON' id='clrFact' class="btn btn-lg btn-danger">Clear</button>
+                            <button type='BUTTON' id='fndFact' class="btn btn-danger disab">Get Factorial</button>
+                            <button type='BUTTON' id='clrFact' class="btn btn-danger">Clear</button>
                             <hr>
                             <h4 id="Fact" class="jsClearOnExit"></h4>
 
@@ -416,6 +416,8 @@ $('body').on('click', '#clrFact', function () {
                     $(event.target).find('.jsClearOnExit').each(function (index, HTMLDivElement) {
                         $(HTMLDivElement).text('')
                     })
+                    $(event.target).find('#fndFizz').prop("disabled", false);
+
                     
                 });
 

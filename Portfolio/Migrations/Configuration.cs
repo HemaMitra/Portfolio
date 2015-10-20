@@ -40,8 +40,9 @@ namespace Portfolio.Migrations
                     Email = "hemamitra@gmail.com",
                     FirstName = "Hema",
                     LastName = "Mitra",
-                    DisplayName = "Hema Mitra"
-                }, "DBconnect-1");
+                    DisplayName = "Hema Mitra",
+                    PwdChgFlag = false
+                 }, "DBconnect-1");
             }
 
             var userId = userManager.FindByEmail("hemamitra@gmail.com").Id;
@@ -64,7 +65,8 @@ namespace Portfolio.Migrations
                     Email = "moderator@coderfoundry.com",
                     FirstName = "Moderator",
                     LastName = "M",
-                    DisplayName = "Moderator"
+                    DisplayName = "Moderator",
+                    PwdChgFlag = true
                 }, "Password-1");
             }
 
