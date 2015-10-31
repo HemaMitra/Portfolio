@@ -51,19 +51,9 @@ namespace Portfolio.Controllers
                                splitQry.Any( q=> t.Body.Contains(q)) || splitQry.Any( q=> t.Category.Contains(q)) ||
                                splitQry.Any( q=> t.Comments.Any(c=>c.Body.Contains(q)))).Distinct();
                     
-                       //qry = qry.Where(t => ((t.Title).Contains(iqry) || (t.Slug).Contains(iqry) ||
-                       //        (t.Body).Contains(iqry) || (t.Category).Contains(iqry) ||
-                       //        (t.Comments).Any(c => (c.Body).Contains(iqry)))).ToList();
-                    
                 }
             }
-            //else
-            //{
-            //    qry = !string.IsNullOrWhiteSpace(query) ? qry.Where
-            //                                                        (t => ((t.Title).Contains(query) || (t.Slug).Contains(query) ||
-            //                                                        (t.Body).Contains(query) || (t.Category).Contains(query) ||
-            //                                                        (t.Comments).Any(c => (c.Body).Contains(query)))).ToList() : qry;
-            //}
+            
             // look for the category if the user clicks on one
             qry = !string.IsNullOrWhiteSpace(category) ? qry.Where(cat => cat.Category == category): qry;
 
@@ -232,7 +222,6 @@ namespace Portfolio.Controllers
                 db.Entry(blogPost).Property("Updated").IsModified = true;
                 db.Entry(blogPost).Property("Published").IsModified = true;
                 
-                //db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -308,7 +297,7 @@ namespace Portfolio.Controllers
             Comment Comment = db.Comments.Find(id);
             db.Comments.Remove(Comment);
             db.SaveChanges();
-            //return RedirectToAction("AdminIndex");
+            
             return RedirectToAction("DetailsU", "BlogPosts", new { Slug = Slug });
         }
 

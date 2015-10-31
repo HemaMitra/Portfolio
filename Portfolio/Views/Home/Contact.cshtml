@@ -6,7 +6,8 @@
 
 <section id="contact" class="section-wrap">
     <div class="container">
-        <h3 class="asmthead fade-toggle">Contact</h3>
+        <div class="shadow pull-right"><h4>@TempData["Message"]</h4></div>    
+    <h3 class="asmthead fade-toggle">Contact</h3>
         
         <div class="row">
                 <!-- Contact Detail and Social Media -->
@@ -24,8 +25,11 @@
 
 
                     <ul class="list-unstyled list-inline social">
-                        <li><a class="social-icon github-icon" href="https://github.com/hemamitra"><i class="fa fa-github"></i></a></li>
-                        <li><a class="social-icon linkedin-icon" href="https://www.linkedin.com/pub/hema-kolte/4/b79/6aa"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a class="social-icon github-icon" href="https://github.com/hemamitra" target="_blank">
+                        <i class="fa fa-github"></i>
+                        </a></li>
+                        <li><a class="social-icon linkedin-icon" href="https://www.linkedin.com/pub/hema-kolte/4/b79/6aa" target="_blank">
+                            <i class="fa fa-linkedin"></i></a></li>
                     </ul>
 
                 </div>
@@ -65,7 +69,7 @@
                         <button type="submit" class="btn btn-lg btn-danger">Send</button>
                     </div>
 </form>
-            <div class="shadow pull-right">@TempData["Message"]</div> 
+            @*<div class="shadow pull-right"><H3>@TempData["Message"]</h3></div> *@
 </div><!-- .row -->
     </div><!-- container -->
     

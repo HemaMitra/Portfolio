@@ -20,7 +20,9 @@
 
                         <div class="blog-meta  blog-calfont">
                             <ul class="list-inline list-unstyled">
-                                <li><i class="fa fa-calendar colBlack"></i>@Html.DisplayFor(model => model.Created)</li>
+                                <li><i class="fa fa-calendar colBlack"></i>
+                                    @Model.Created.ToString("MMMM dd, yyyy")</li>
+
                                 <li><i class="fa fa-comments colBlack"></i>@Model.Comments.Count</li>
 
                                 @if (User.IsInRole("Admin"))
@@ -39,9 +41,6 @@
                         <div class="row">
                             <div class="blog-comments col-md-12 col-xs-12">
                                 <h5><b>@Model.Comments.Count Comments</b></h5>
-
-
-
                             </div>
                         </div>
 
@@ -82,10 +81,15 @@
                                         {
                                             <ul class="list-inline list-unstyled pull-right">
                                                 <li>
-                                                    <a href="" class="edit" data-toggle="modal" data-target="#edtcmt" data-comid="@com.Id"
-                                                       data-body="@com.Body">Edit</a>
+                                                    <a href="" class="edit" data-toggle="modal" data-target="#edtcmt" 
+                                                       data-comid="@com.Id"
+                                                      data-body="@com.Body">Edit</a>
 
-                                                <li>@Html.ActionLink("Delete", "DeleteComment", new { id = @com.Id, Slug = @Model.Slug })</li>
+                                                <li>
+                                                <a href="" class="delete" data-toggle="modal" data-target="#dltcmt"
+                                                       data-dcomid="@com.Id" 
+                                                       data-dbody="@com.Body">Delete</a>
+                                                </li>
                                             </ul>
                                         }
 
@@ -177,8 +181,7 @@
             </div><!-- Col-md-4 end -->
         </div><!-- row -->
     </div><!-- container -->
-    @*<br>
-        <h3 class="asmthead fade-toggle">Blog Details</h3>*@
+   
     <!-- Modal For Edit Start -->
 
     <div class="modal fade" id="edtcmt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -194,7 +197,7 @@
                         <input type="hidden" id="Id" name="Id" />
                         <input type="hidden" id="Slug" name="Slug" value="@Model.Slug" />
                         <textarea class="form-control" rows="3" placeholder="Message" id="Body" name="Body"></textarea>
-                        
+                        <br>
                         <input type="submit" value="Submit" class="btn btn-danger col-md-offset-4" />
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         
@@ -206,17 +209,53 @@
         </div>
     </div>
     <!--  Modal for edit closed -->
+
+    <div class="modal fade" id="dltcmt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this comment ?</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="@Url.Action("DeleteComment")" method="post" enctype="multipart/form-data" role="form">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" id="Idd" name="Id" />
+                        <input type="hidden" id="Slugd" name="Slug" value="@Model.Slug" />
+                        <textarea class="form-control" rows="3" placeholder="Message" id="Bodyd" name="Body" disabled></textarea>
+                        
+                        <br>
+                        <input type="submit" value="Delete" class="btn btn-danger col-md-offset-4" />
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
     </body>
     @section Scripts{
         <script type="text/javascript">
+            $('.delete').click(function () {
+                $('#Idd').attr("value", $(this).data("dcomid"));
+                $('#Bodyd').val($(this).attr("data-dbody"));
+            })
+
             $('.edit').click(function () {
                 $('#Id').attr("value", $(this).data("comid"));
                 $('#Body').val($(this).attr("data-body"));
             })
 
             $('.back').click(function () {
-
-
             })
+
         </script>
     }

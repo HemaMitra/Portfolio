@@ -25,7 +25,9 @@
                             {   <img class="img-responsive blog-thumb" src="@item.MediaURL" alt="">}
                             <div class="blog-meta  blog-calfont">
                                 <ul class="list-inline list-unstyled">
-                                    <li><i class="fa fa-calendar colBlack"></i> @Html.DisplayFor(modelItem => item.Created.Date)</li>
+                                    <li><i class="fa fa-calendar colBlack"></i> @item.Created.ToString("MMMM dd, yyyy")</li>
+
+
                                     <li><i class="fa fa-comments colBlack"></i>@item.Comments.Count</li>
 
                                     @if (User.IsInRole("Admin"))
