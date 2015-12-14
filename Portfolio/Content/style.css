@@ -138,6 +138,11 @@ input.form-control1:focus
           box-shadow: 0 0 8px #eee;
 }
 
+
+.left-pad{
+    padding-left:30px;
+}
+
 /* End Added By Hema */
 
 
