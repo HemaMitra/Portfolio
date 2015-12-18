@@ -51,13 +51,6 @@ namespace Portfolio.Controllers
             return View();
         }
 
-        public ActionResult BlogSingle()
-        {
-            ViewBag.Message = "Blogs";
-
-            return View();
-        }
-
         public ActionResult Contact()
         {
             return View();

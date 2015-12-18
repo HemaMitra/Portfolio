@@ -240,27 +240,16 @@
     <Content Include="img\bg-img.jpg" />
     <Content Include="img\Fact.jpg" />
     <Content Include="img\Fizz.jpg" />
-    <Content Include="img\gallery\gal-img-1.jpg" />
-    <Content Include="img\gallery\gal-img-2.jpg" />
-    <Content Include="img\gallery\gal-img-3.jpg" />
-    <Content Include="img\gallery\gal-img-4.jpg" />
-    <Content Include="img\gallery\gal-img-5.jpg" />
-    <Content Include="img\gallery\gal-img-6.jpg" />
     <Content Include="img\hema_profile_new.png" />
     <Content Include="img\hero-figure-sm.jpg" />
     <Content Include="img\ico\apple-touch-icon-114-precomposed.png" />
     <Content Include="img\ico\apple-touch-icon-144-precomposed.png" />
     <Content Include="img\ico\apple-touch-icon-72-precomposed.png" />
     <Content Include="img\ico\favicon.png" />
-    <Content Include="img\Js.jpg" />
     <Content Include="img\logo_2.jpg" />
     <Content Include="img\num.jpg" />
     <Content Include="img\Pali.jpg" />
     <Content Include="img\Random.jpg" />
-    <Content Include="img\thumb\thumb-1.jpg" />
-    <Content Include="img\thumb\thumb-2.jpg" />
-    <Content Include="img\thumb\thumb-3.jpg" />
-    <Content Include="img\thumb\thumb-4.jpg" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
@@ -509,8 +498,6 @@
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
-    <Content Include="Scripts\twitterFetcher.js" />
-    <Content Include="Scripts\twitterFetcher_min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -551,7 +538,6 @@
     <Content Include="Views\Home\Skills.cshtml" />
     <Content Include="Views\Home\Experience.cshtml" />
     <Content Include="Views\Home\BlogPost.cshtml" />
-    <Content Include="Views\Home\BlogSingle.cshtml" />
     <Content Include="Views\Home\JScript.cshtml" />
     <Content Include="Views\Home\Assignments.cshtml" />
     <Content Include="Views\BlogPosts\Create.cshtml" />
@@ -581,6 +567,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\gallery\" />
+    <Folder Include="img\thumb\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

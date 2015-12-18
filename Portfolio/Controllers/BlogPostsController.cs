@@ -245,14 +245,12 @@ namespace Portfolio.Controllers
 
         // POST: BlogPosts/Delete/5
         [HttpPost, ActionName("Delete")]
-        //[Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             BlogPost blogPost = db.BlogPost.Find(id);
             db.BlogPost.Remove(blogPost);
             db.SaveChanges();
-            //return RedirectToAction("AdminIndex");
             return RedirectToAction("Index");
         }
 
@@ -270,7 +268,6 @@ namespace Portfolio.Controllers
             return RedirectToAction("DetailsU", "BlogPosts", new {Slug = Slug});
         }
 
-        [Authorize(Roles = "Admin, Moderator")]
         [ValidateAntiForgeryToken]
         public ActionResult EditComment(int id,string Slug,string Body)
         {
@@ -291,7 +288,6 @@ namespace Portfolio.Controllers
             return RedirectToAction("DetailsU", "BlogPosts", new { Slug = Slug });
         }
         
-        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult DeleteComment(int id,string Slug)
         {
             Comment Comment = db.Comments.Find(id);

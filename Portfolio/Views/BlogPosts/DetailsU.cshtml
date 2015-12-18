@@ -77,17 +77,18 @@
                                         <br>
                                         @com.Body
 
-                                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                        @*@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))*@
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Moderator") || com.AuthorId == User.Identity.GetUserId())
                                         {
                                             <ul class="list-inline list-unstyled pull-right">
                                                 <li>
-                                                    <a href="" class="edit" data-toggle="modal" data-target="#edtcmt" 
+                                                    <a href="" class="edit btn btn-sm btn-danger" data-toggle="modal" data-target="#edtcmt" 
                                                        data-comid="@com.Id"
                                                       data-body="@com.Body">Edit</a>
 
                                                 <li>
-                                                <a href="" class="delete" data-toggle="modal" data-target="#dltcmt"
-                                                       data-dcomid="@com.Id" 
+                                                    <a href="" class="delete btn btn-sm btn-danger" data-toggle="modal" data-target="#dltcmt"
+                                                       data-dcomid="@com.Id"
                                                        data-dbody="@com.Body">Delete</a>
                                                 </li>
                                             </ul>

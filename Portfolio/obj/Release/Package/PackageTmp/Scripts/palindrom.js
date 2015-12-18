@@ -36,9 +36,9 @@ $('body').on('click', '#FndPali', function () {
 			// Displaying Result
 			$('#Pali').removeClass('errMsg');
 			if(flag == 1)
-				$('#Pali').text('You have entered a Plaindrom').show();			
+				$('#Pali').text('You have entered a Palindrom').show();			
 			else
-				$('#Pali').text('The entered word is not a Plaindrom').show();			
+			    $('#Pali').text('The entered word is not a Palindrom').show();
 		}
 	});
 

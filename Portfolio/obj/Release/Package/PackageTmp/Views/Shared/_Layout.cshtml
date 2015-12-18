@@ -13,7 +13,6 @@
     <link href="~/Content/magnific-popup.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
-    <!--<script src="~/Scripts/twitterFetcher_min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
     
@@ -72,7 +71,7 @@
     <footer class="main-footer navbar-fixed-bottom">
         <div class="container">
             <ul class="list-inline fa-ul archive">
-                <li><i class="fa-li fa fa-save"></i><a href="~/img/HemaMitra_Resume.pdf" class="colBlack">Download CV as PDF</a></li>
+                <li><i class="fa-li fa fa-save"></i><a href="~/img/HemaMitra_Resume.pdf" class="colBlack" target="_blank">Download CV as PDF</a></li>
             </ul>
         </div>
     </footer>
@@ -84,11 +83,8 @@
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/SyntaxHighlighter/shCore.js"></script>
     <script src="~/Scripts/SyntaxHighlighter/shBrushJScript.js"></script>
-    @*<script src="~/Scripts/jquery.scrollTo.js"></script>*@
     <script src="~/Scripts/jquery.magnific-popup.js"></script>
     <script src="~/Scripts/jquery.easypiechart.js"></script>
-    @*<script src="~/Scripts/modernizr-2.6.2.js"></script>*@
-    @*<script src="~/Scripts/jquery.fitvids.js"></script>*@
     <script src="~/Scripts/maxnum.js"></script>
     <script src="~/Scripts/palindrom.js"></script>
     <script src="~/Scripts/multiple.js"></script>
@@ -99,14 +95,8 @@
     <script src="~/Scripts/jquery.scrollTo.js"></script>
     <script src="~/Scripts/custom.js"></script>
 
-    <!-- For IE 9
-    <script src="~/Scripts/html5shiv.js"></script>
-    <script src="~/Scripts/respond.min.js"></script>
-    -->
-
     <!-- For Blog-Single -->
     <script src="~/Scripts/jquery.shuffle.modernizr.js"></script>
-
 
     @RenderSection("scripts", required: false)
 </body>
